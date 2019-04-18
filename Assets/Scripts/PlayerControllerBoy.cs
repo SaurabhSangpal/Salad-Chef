@@ -5,7 +5,7 @@ using UnityEngine;
 // Bound wasd for movement. Arrow keys are not bound
 public class PlayerControllerBoy : MonoBehaviour
 {
-    float speed = 4.0f;
+    float speed = 7.6f;
     Vector3 move;
     // Start is called before the first frame update
     void Start()
