@@ -17,20 +17,20 @@ public class PlayerControllerGirl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("[8]"))
+        if (Input.GetKey("up"))
         {
             // Move up
             vertical = 1;
-        } else if (Input.GetKey("[2]"))
+        } else if (Input.GetKey("down"))
         {
             // Move down
             vertical = -1;
         } else { vertical = 0; }
-        if (Input.GetKey("[4]"))
+        if (Input.GetKey("left"))
         {
             // Move left
             horizontal = -1;
-        } else if (Input.GetKey("[6]"))
+        } else if (Input.GetKey("right"))
         {
             // Move right
             horizontal = 1;

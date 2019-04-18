@@ -368,8 +368,8 @@ GameObject:
   - component: {fileID: 347413700}
   - component: {fileID: 347413699}
   - component: {fileID: 347413701}
-  - component: {fileID: 347413702}
   - component: {fileID: 347413703}
+  - component: {fileID: 347413702}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Player
@@ -433,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347413698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -3.23, z: 0}
+  m_LocalPosition: {x: 7, y: -3.23, z: -0.01}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_Children: []
   m_Father: {fileID: 0}
@@ -959,8 +959,8 @@ GameObject:
   - component: {fileID: 915684814}
   - component: {fileID: 915684813}
   - component: {fileID: 915684815}
-  - component: {fileID: 915684817}
   - component: {fileID: 915684816}
+  - component: {fileID: 915684817}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Player
