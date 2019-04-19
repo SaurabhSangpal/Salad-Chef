@@ -14,9 +14,22 @@ public class PlayerControllerGirl : MonoBehaviour
         
     }
 
+    // Handles the key used for interaction with all game objects
+    bool SpecialKey()
+    {
+        if (Input.GetKey("return"))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        SpecialKey();
         if (Input.GetKey("up"))
         {
             // Move up
