@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public string up, down, left, right, special;
+    public string up, down, left, right;
     public float speed;
     Vector3 move;
     float vertical, horizontal;
@@ -36,18 +36,6 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
-    // SPACE for player 1 and RETURN for player 2
-    bool SpecialKey()
-    {
-        if (Input.GetKey(special))
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +45,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpecialKey();
         SetMovement();
     }
 }
