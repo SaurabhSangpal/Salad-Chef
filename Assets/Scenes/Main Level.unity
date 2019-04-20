@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7fd630582370e408765ec89d34a2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  special: return
+  special: Return
   gameobject: {fileID: 0}
 --- !u!1 &351911540
 GameObject:
@@ -2856,7 +2856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7fd630582370e408765ec89d34a2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  special: space
+  special: Space
   gameobject: {fileID: 0}
 --- !u!1001 &919056941
 PrefabInstance:
