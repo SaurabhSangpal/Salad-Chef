@@ -790,8 +790,6 @@ MonoBehaviour:
   left: left
   right: right
   speed: 8
-  gameobject: {fileID: 347413698}
-  score: {fileID: 347413705}
 --- !u!61 &347413702
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -867,6 +865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Player 2
   inventory: 0000000000000000
+  gameobject: {fileID: 347413698}
 --- !u!1 &351911540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,9 +2823,7 @@ MonoBehaviour:
   down: s
   left: a
   right: d
-  speed: 7.6
-  gameobject: {fileID: 915684812}
-  score: {fileID: 915684819}
+  speed: 8
 --- !u!50 &915684816
 Rigidbody2D:
   serializedVersion: 4
@@ -2904,6 +2901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Player 1
   inventory: 0000000000000000
+  gameobject: {fileID: 915684812}
 --- !u!1001 &919056941
 PrefabInstance:
   m_ObjectHideFlags: 0

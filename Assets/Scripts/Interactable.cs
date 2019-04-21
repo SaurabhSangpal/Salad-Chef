@@ -7,17 +7,19 @@ public class Interactable : MonoBehaviour
     public string special;
     public GameObject gameobject = null;
 
-    void PollForInput()
+    // Used in Score.cs
+    public bool PollForInput()
     {
         if(Input.GetButtonDown(special) && gameobject)
         {
             Debug.Log("Pressed: " + special);
-        }
+            return true;
+        } else
+            return false;
     }
 
     void Update()
     {
-        PollForInput();
     }
 
     void OnTriggerEnter2D(Collider2D collider)

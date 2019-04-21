@@ -15,7 +15,6 @@ public class Customer : MonoBehaviour
     {
         System.Random random = new System.Random();
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
-
     }
 
     // Generates time to wait before getting angry
