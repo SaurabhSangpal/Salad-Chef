@@ -25,6 +25,10 @@ public class Score : MonoBehaviour
         {
             switch (interactable.gameobject.name)
             {
+                case "Trash_Can":
+                    inventory[0] = inventory[1] = -1;
+                    temp = -1;
+                    break;
                 default:
                     temp = -1;
                     break;

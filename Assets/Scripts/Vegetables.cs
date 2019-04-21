@@ -13,9 +13,4 @@ public class Vegetables : MonoBehaviour
     { 
         return TimeToCut * Time.deltaTime;
     }
-
-    public Vector3 ReturnPosition()
-    {
-        return transform.position;
-    }
 }

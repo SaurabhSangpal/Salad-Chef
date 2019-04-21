@@ -7,7 +7,7 @@ public class Customer : MonoBehaviour
 {
     int[] numbers = new int[] {0, 1, 2, 3, 4, 5};
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
-    float TotalTime, time;
+    public float TotalTime, time;
 
     // Used to create a random array that includes all the elements from Veg; we will pick the
     // first two/three elements from here as the order

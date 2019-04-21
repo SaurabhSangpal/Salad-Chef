@@ -321,7 +321,12 @@ PrefabInstance:
     - target: {fileID: 5574990370693357667, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
       propertyPath: m_Name
-      value: plate
+      value: Plate02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574990370693357667, guid: bcefb0ef06c867344a47568166be4173,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 5574990370693357665, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
@@ -361,7 +366,7 @@ PrefabInstance:
     - target: {fileID: 5574990370693357665, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5574990370693357665, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
@@ -865,7 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Player 2
   inventory: 0000000000000000
-  gameobject: {fileID: 347413698}
+  PlayerScore: 0
 --- !u!1 &351911540
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +1000,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -3.43}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2.5
 --- !u!1001 &472489980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1006,7 +1011,7 @@ PrefabInstance:
     - target: {fileID: 7668357067699006098, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
       propertyPath: m_Name
-      value: chopping_board
+      value: Chopping_Board02
       objectReference: {fileID: 0}
     - target: {fileID: 7668357067699006098, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
@@ -1051,7 +1056,7 @@ PrefabInstance:
     - target: {fileID: 7668357067699006092, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7668357067699006092, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
@@ -2901,7 +2906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Player 1
   inventory: 0000000000000000
-  gameobject: {fileID: 915684812}
+  PlayerScore: 0
 --- !u!1001 &919056941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3287,7 +3292,7 @@ GameObject:
   - component: {fileID: 1020583846}
   - component: {fileID: 1020583848}
   m_Layer: 0
-  m_Name: trash_can
+  m_Name: Trash_Can
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3897,10 +3902,10 @@ Transform:
   m_LocalPosition: {x: 2.6760209, y: -0.0994517, z: -13.292969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 154960922}
   - {fileID: 941162259}
-  - {fileID: 472489981}
+  - {fileID: 154960922}
   - {fileID: 1919772112}
+  - {fileID: 472489981}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4674,7 +4679,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 3.43}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2.5
 --- !u!4 &1523098567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7138519565579089655, guid: b8298819a9faf7844a7247aa3f8bd90d,
@@ -5295,6 +5300,8 @@ MonoBehaviour:
   - Carrot
   - Cabbage
   - Cauliflower
+  TotalTime: 0
+  time: 0
 --- !u!58 &1770934723
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5745,6 +5752,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1956931171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1961886276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5574990370693357667, guid: bcefb0ef06c867344a47568166be4173,
+    type: 3}
+  m_PrefabInstance: {fileID: 154960921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1961886277
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961886276}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 3.13}
+  serializedVersion: 2
+  m_Radius: 2.5
 --- !u!1001 &1970753962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5820,6 +5849,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1970753962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1993997397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5574990370693357667, guid: bcefb0ef06c867344a47568166be4173,
+    type: 3}
+  m_PrefabInstance: {fileID: 5574990370829131634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1993997398
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993997397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000019073486, y: 3.13}
+  serializedVersion: 2
+  m_Radius: 2.5
 --- !u!1001 &2106050813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5980,7 +6031,12 @@ PrefabInstance:
     - target: {fileID: 5574990370693357667, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
       propertyPath: m_Name
-      value: plate
+      value: Plate01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574990370693357667, guid: bcefb0ef06c867344a47568166be4173,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 5574990370693357665, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
@@ -6020,7 +6076,7 @@ PrefabInstance:
     - target: {fileID: 5574990370693357665, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5574990370693357665, guid: bcefb0ef06c867344a47568166be4173,
         type: 3}
@@ -6257,7 +6313,7 @@ PrefabInstance:
     - target: {fileID: 7668357067699006098, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
       propertyPath: m_Name
-      value: chopping_board
+      value: Chopping_Board01
       objectReference: {fileID: 0}
     - target: {fileID: 7668357067699006098, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
@@ -6302,7 +6358,7 @@ PrefabInstance:
     - target: {fileID: 7668357067699006092, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7668357067699006092, guid: 4c4fbdccd83bd3a4aadb19f6be48d0c8,
         type: 3}
