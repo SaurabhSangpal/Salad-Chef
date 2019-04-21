@@ -5,33 +5,39 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public string special;
+    public GameObject gameobject = null;
 
-    void PollForInput()
+    // Used in Score.cs
+    public bool PollForInput()
     {
         if(Input.GetButtonDown(special) && gameobject)
         {
             Debug.Log("Pressed: " + special);
-        }
+            return true;
+        } else
+            return false;
     }
 
     void Update()
     {
-        PollForInput();
     }
 
-    public GameObject gameobject = null;
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Interactable"))
         {
             Debug.Log(collider.name);
             gameobject = collider.gameObject;
+        } else if (collider.CompareTag("Customer"))
+        {
+            Debug.Log("Customer: " + collider.name);
+            gameobject = collider.gameObject;
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Interactable"))
+        if (collider.CompareTag("Interactable") || collider.CompareTag("Customer"))
         {
             if (collider.gameObject == gameobject)
             {

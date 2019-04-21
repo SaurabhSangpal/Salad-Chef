@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float speed;
     Vector3 move;
     float vertical, horizontal;
+    private Score score;
 
     // Sets transformation depending on which key we have held down
     void SetMovement()
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = GetComponent<Score>();
     }
 
     // Update is called once per frame
