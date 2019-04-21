@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     float vertical, horizontal;
     private Score score;
 
-    // Sets transformation depending on which key we have held down
+    /// <summary>
+    /// Sets up movement depending on the public movement variables
+    /// </summary>
     void SetMovement()
     {
         if (Input.GetKey(up))
@@ -37,13 +39,11 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         score = GetComponent<Score>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetMovement();

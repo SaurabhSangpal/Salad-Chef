@@ -9,20 +9,31 @@ public class Customer : MonoBehaviour
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
     public float TotalTime, time;
 
-    // Used to create a random array that includes all the elements from Veg; we will pick the
-    // first two/three elements from here as the order
+    /// <summary>
+    /// Used to create a random array that includes all the elements from Veg; we will pick the
+    /// first two/three elements from here as the order
+    /// </summary>
     void RandomizeArray()
     {
         System.Random random = new System.Random();
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
     }
 
-    // Generates time to wait before getting angry
+    /// <summary>
+    /// Generates time to wait before getting angry
+    /// </summary>
     void GenerateTime()
     {
-        TotalTime = 0;
-        // Will probably implement randomization here to choose 2 or three vegetables.
-        int x = 3;
+        TotalTime = 20;
+        // Randomized selection slightly favoring 3 elements
+        int tmp = Random.Range(0, 10);
+        int x;
+        if (tmp > 6)
+        {
+            x = 2;
+        } else
+            x = 3;
+
         for(int i = 0; i < x; i++)
         {
             switch (numbers[i])
@@ -50,7 +61,9 @@ public class Customer : MonoBehaviour
         Debug.Log(TotalTime);
     }
 
-    // Checks if the time is over
+    /// <summary>
+    /// Checks if the time is over
+    /// </summary>
     void TimePassed()
     {
         time += Time.deltaTime;
@@ -60,7 +73,6 @@ public class Customer : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         time = 0.0f;
@@ -72,7 +84,6 @@ public class Customer : MonoBehaviour
         GenerateTime();
     }
 
-    // Update is called once per frame
     void Update()
     {
         TimePassed();
