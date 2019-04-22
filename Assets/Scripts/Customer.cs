@@ -66,6 +66,7 @@ public class Customer : MonoBehaviour
         time += Time.deltaTime;
         if (time >= TotalTime)
         {
+            
             // Failed the task
             Awake();
         }
@@ -84,6 +85,7 @@ public class Customer : MonoBehaviour
             //Debug.Log(Veg[x]);
         }
         GenerateTime();
+        Debug.Log("Customer Created");
     }
 
     void Update()
