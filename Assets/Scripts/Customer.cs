@@ -5,25 +5,31 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    int[] numbers = new int[] {0, 1, 2, 3, 4, 5};
+    public int[] numbers = new int[] {0, 1, 2, 3, 4, 5};
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
-    public float TotalTime, time;
+    public  float TotalTime, time;
+    // Random number between 2 and 3
+    public int NumberOfElements;
+    static System.Random random;
 
-    // Used to create a random array that includes all the elements from Veg; we will pick the
-    // first two/three elements from here as the order
+    /// <summary>
+    /// Used to create a random array that includes all the elements from Veg; we will pick the
+    /// first two/three elements from here as the order
+    /// </summary>
     void RandomizeArray()
     {
-        System.Random random = new System.Random();
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
     }
 
-    // Generates time to wait before getting angry
+    /// <summary>
+    /// Generates time to wait before getting angry
+    /// </summary>
     void GenerateTime()
     {
-        TotalTime = 0;
-        // Will probably implement randomization here to choose 2 or three vegetables.
-        int x = 3;
-        for(int i = 0; i < x; i++)
+        TotalTime = 20.0f;
+        NumberOfElements = 3;
+
+        for(int i = 0; i < 3; i++)
         {
             switch (numbers[i])
             {
@@ -45,12 +51,16 @@ public class Customer : MonoBehaviour
             case 5:
                 TotalTime += 10;
                 break;
+            default:
+                break;
             }
         }
         Debug.Log(TotalTime);
     }
 
-    // Checks if the time is over
+    /// <summary>
+    /// Checks if the time is over
+    /// </summary>
     void TimePassed()
     {
         time += Time.deltaTime;
@@ -60,10 +70,13 @@ public class Customer : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    //Changed from Start() to Awake() so that it would be done by the time 
+    // CustomerText.Start() loads
+    void Awake()
     {
-        time = 0.0f;
+        // Using GUID as seed to generate random numbers
+        random = new System.Random(int.Parse(System.Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
+        time = TotalTime = 0.0f;
         RandomizeArray();
         foreach (int x in numbers)
         {
@@ -72,7 +85,6 @@ public class Customer : MonoBehaviour
         GenerateTime();
     }
 
-    // Update is called once per frame
     void Update()
     {
         TimePassed();
