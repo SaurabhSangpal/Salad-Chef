@@ -55,7 +55,7 @@ public class Customer : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(TotalTime);
+        //Debug.Log(TotalTime);
     }
 
     /// <summary>
@@ -67,6 +67,7 @@ public class Customer : MonoBehaviour
         if (time >= TotalTime)
         {
             // Failed the task
+            Awake();
         }
     }
 
@@ -80,7 +81,7 @@ public class Customer : MonoBehaviour
         RandomizeArray();
         foreach (int x in numbers)
         {
-            Debug.Log(Veg[x]);
+            //Debug.Log(Veg[x]);
         }
         GenerateTime();
     }

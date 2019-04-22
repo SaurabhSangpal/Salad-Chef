@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float speed;
     Vector3 move;
     float vertical, horizontal;
-    private Score score;
+    public Score score;
 
     /// <summary>
     /// Sets up movement depending on the public movement variables

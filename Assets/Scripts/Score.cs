@@ -40,6 +40,7 @@ public class Score : MonoBehaviour
                     {
                         // Cut the vegetables if boy(Player 1) uses left chopping board
                         Debug.Log("Chop-Chop");
+                        SetScore();
                     }
                     temp = 6;
                     break;
@@ -48,6 +49,7 @@ public class Score : MonoBehaviour
                     {
                         // Cut the vegetables if girl(Player 2) uses left chopping board
                         Debug.Log("Chop-Chop");
+                        SetScore();
                     }
                     temp = 6;
                     break;
@@ -92,6 +94,22 @@ public class Score : MonoBehaviour
 	            }
             }
         }
+    }
+
+    /// <summary>
+    /// Sets player score. Use to display it on HUD
+    /// </summary>
+    void SetScore()
+    {
+        if (inventory[0] < 6 && inventory[0] > -1)
+        {
+            PlayerScore += (int)TimeRequired[inventory[0]];
+        }
+        if (inventory[1] < 6 && inventory[1] > -1)
+        {
+            PlayerScore += (int)TimeRequired[inventory[1]];
+        }
+        inventory[0] = inventory[1] = -1;
     }
 
     void Update()
