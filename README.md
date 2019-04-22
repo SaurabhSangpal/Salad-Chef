@@ -12,11 +12,19 @@ customers and added basic functionality to them.
 
 The player can now go near any vegetable and press the __Special__ key (__SPACE__
 and __ENTER__) and it gets registered. Functionality hasn't yet been added to it.
+
+Each player has a separate inventory and can hold up to two vegetables at a time.
+
+Customer timer bar and text element displaying the vegetables needed by each
+customer have been implemented.
 ## TODO
-Create an inventory for each player and allow it to have up to two vegetables at
-any time. Will probably implement an inventory on the plates or create another
-inventory in the players so that it can hold up to three chopped vegetables.
+Create a script for Chopping_Board that handles vegetable chopping and stops 
+player movement when doing so. Customer.GenerateTime() has a bug that causes it to
+show a larger time remaining that specified; fix that. 
+
+Fix up code duplication as much as possible.
 
 # Disclaimer
-None of the images used in this game are created or owned by me. All of the images
-used in this game are licensed under a Creative Commons license.
+None of the images (except bar2.png) used in this game are created or owned 
+by me. All of the images used in this game are licensed under a Creative
+Commons license.

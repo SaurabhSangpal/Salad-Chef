@@ -10,7 +10,6 @@ public class Customer : MonoBehaviour
     public  float TotalTime, time;
     // Random number between 2 and 3
     public int NumberOfElements;
-    public bool StartExecuting = false;
 
     /// <summary>
     /// Used to create a random array that includes all the elements from Veg; we will pick the
@@ -27,17 +26,10 @@ public class Customer : MonoBehaviour
     /// </summary>
     void GenerateTime()
     {
-        TotalTime = 20;
-        // Randomized selection slightly favoring 3 elements
-        int tmp = Random.Range(0, 10);
-        int NumberOfElements;
-        if (tmp > 6)
-        {
-            NumberOfElements = 2;
-        } else
-            NumberOfElements = 3;
+        TotalTime = 20.0f;
+        NumberOfElements = 3;
 
-        for(int i = 0; i < NumberOfElements; i++)
+        for(int i = 0; i < 3; i++)
         {
             switch (numbers[i])
             {
@@ -59,10 +51,11 @@ public class Customer : MonoBehaviour
             case 5:
                 TotalTime += 10;
                 break;
+            default:
+                break;
             }
         }
         Debug.Log(TotalTime);
-        StartExecuting = true;
     }
 
     /// <summary>
@@ -82,7 +75,7 @@ public class Customer : MonoBehaviour
     void Awake()
     {
         //customerbar = GetComponent<CustomerBar>();
-        time = 0.0f;
+        time = TotalTime = 0.0f;
         RandomizeArray();
         foreach (int x in numbers)
         {
