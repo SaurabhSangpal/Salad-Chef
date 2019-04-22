@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    int[] numbers = new int[] {0, 1, 2, 3, 4, 5};
+    public int[] numbers = new int[] {0, 1, 2, 3, 4, 5};
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
-    public float TotalTime, time;
+    public  float TotalTime, time;
+    // Random number between 2 and 3
+    public int NumberOfElements;
+    public bool StartExecuting = false;
 
     /// <summary>
     /// Used to create a random array that includes all the elements from Veg; we will pick the
@@ -27,14 +30,14 @@ public class Customer : MonoBehaviour
         TotalTime = 20;
         // Randomized selection slightly favoring 3 elements
         int tmp = Random.Range(0, 10);
-        int x;
+        int NumberOfElements;
         if (tmp > 6)
         {
-            x = 2;
+            NumberOfElements = 2;
         } else
-            x = 3;
+            NumberOfElements = 3;
 
-        for(int i = 0; i < x; i++)
+        for(int i = 0; i < NumberOfElements; i++)
         {
             switch (numbers[i])
             {
@@ -59,6 +62,7 @@ public class Customer : MonoBehaviour
             }
         }
         Debug.Log(TotalTime);
+        StartExecuting = true;
     }
 
     /// <summary>
@@ -73,8 +77,11 @@ public class Customer : MonoBehaviour
         }
     }
 
-    void Start()
+    //Changed from Start() to Awake() so that it would be done by the time 
+    // CustomerText.Start() loads
+    void Awake()
     {
+        //customerbar = GetComponent<CustomerBar>();
         time = 0.0f;
         RandomizeArray();
         foreach (int x in numbers)
