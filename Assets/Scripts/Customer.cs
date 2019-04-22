@@ -10,6 +10,7 @@ public class Customer : MonoBehaviour
     public  float TotalTime, time;
     // Random number between 2 and 3
     public int NumberOfElements;
+    static System.Random random;
 
     /// <summary>
     /// Used to create a random array that includes all the elements from Veg; we will pick the
@@ -17,7 +18,6 @@ public class Customer : MonoBehaviour
     /// </summary>
     void RandomizeArray()
     {
-        System.Random random = new System.Random();
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
     }
 
@@ -74,7 +74,8 @@ public class Customer : MonoBehaviour
     // CustomerText.Start() loads
     void Awake()
     {
-        //customerbar = GetComponent<CustomerBar>();
+        // Using GUID as seed to generate random numbers
+        random = new System.Random(int.Parse(System.Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
         time = TotalTime = 0.0f;
         RandomizeArray();
         foreach (int x in numbers)
