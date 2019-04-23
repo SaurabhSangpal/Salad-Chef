@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    public int[] numbers = new int[] {0, 1, 2, 3, 4, 5};
+    public int[] numbers = new int[] { 0, 1, 2, 3, 4, 5 };
+    public int[] items = new int[3];
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
     public  float TotalTime, time;
     // Random number between 2 and 3
@@ -19,6 +20,10 @@ public class Customer : MonoBehaviour
     void RandomizeArray()
     {
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
+        for (int i = 0; i < 3; i++)
+        {
+            items[i] = numbers[i];
+        }
     }
 
     /// <summary>
@@ -66,22 +71,15 @@ public class Customer : MonoBehaviour
         time += Time.deltaTime;
         if (time >= TotalTime)
         {
-            
             // Failed the task
             Awake();
         }
     }
 
-    void CheckSalad(List<int> salad)
+    // If player gets the wrong salad, execute
+    public void GetAngry()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            if (!salad.Contains(i))
-            {
-                // Get angry
-                TotalTime /= 2;
-            }
-        }
+        TotalTime /= 2;
     }
 
     //Changed from Start() to Awake() so that it would be done by the time 
