@@ -31,10 +31,6 @@ public class InventoryHUD : MonoBehaviour
                 ItemsDisplayed++;
             }
         }
-        else
-        {
-            //CleanInventory();
-        }
     }
 
     void CleanInventory()

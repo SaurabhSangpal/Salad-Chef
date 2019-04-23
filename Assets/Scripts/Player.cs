@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
     private float TimeToWait, Waiting;
     // Total time left for a player
     public float TimeLeft = 120.0f;
-    private string CustomerName;
-    private Customer customer;
 
     /// <summary>
     /// Sets up movement depending on the public movement variables
@@ -45,19 +43,6 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
-    void CheckCustomer()
-    {
-        if (score.interactable.PollForInput())
-        {
-            if (score.interactable.gameobject.tag == "Customer")
-            {
-                // Give the produced salad
-                CustomerName = score.interactable.gameobject.name;
-                customer = GetComponent<Customer>();
-            }
-        }
-    }
-
     void SetWaitTime()
     {
         if (score.inventory.Count > 0)
@@ -78,7 +63,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         SetMovement();
-        CheckCustomer();
         if (Waiting >= TimeToWait)
         {
             TimeToWait = Waiting = 0.0f;

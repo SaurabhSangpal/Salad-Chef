@@ -9,8 +9,7 @@ public class HUD : MonoBehaviour
     Text text;
     private int score;
     private float TimeLeft = 0.0f;
-    [SerializeField]
-    private short DisplayValue;
+    public short DisplayValue;
 
     void Start()
     {
@@ -18,6 +17,8 @@ public class HUD : MonoBehaviour
         text.text = "";
     }
 
+    // Will be used to optimize so that we would not read from player.score
+    // when we don't need to
     bool GetScore()
     {
         if (score != player.score.PlayerScore)
