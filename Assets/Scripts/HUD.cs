@@ -8,6 +8,9 @@ public class HUD : MonoBehaviour
     public Player player;
     Text text;
     private int score;
+    private float TimeLeft = 0.0f;
+    [SerializeField]
+    private short DisplayValue;
 
     void Start()
     {
@@ -26,6 +29,14 @@ public class HUD : MonoBehaviour
 
     }
 
+    void GetTime()
+    {
+        if (TimeLeft != player.TimeLeft)
+        {
+            TimeLeft = player.TimeLeft;
+        }
+    }
+
     void UpdateScore()
     {
         text.text = "Score: ";
@@ -34,10 +45,14 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        UpdateScore();
-        if (GetScore())
+        if (DisplayValue == 0)
         {
-            //UpdateScore();
+            UpdateScore();
+        } else if (DisplayValue == 1)
+        {
+            GetTime();
+            text.text = "";
+            text.text += player.TimeLeft;
         }
     }
 }

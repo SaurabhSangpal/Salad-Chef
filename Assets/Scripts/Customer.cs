@@ -72,6 +72,18 @@ public class Customer : MonoBehaviour
         }
     }
 
+    void CheckSalad(List<int> salad)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!salad.Contains(i))
+            {
+                // Get angry
+                TotalTime /= 2;
+            }
+        }
+    }
+
     //Changed from Start() to Awake() so that it would be done by the time 
     // CustomerText.Start() loads
     void Awake()
