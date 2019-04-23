@@ -17,10 +17,10 @@ Each player has a separate inventory and can hold up to two vegetables at a time
 
 Customer timer bar and text element displaying the vegetables needed by each
 customer have been implemented.
+
+Player timer shows up at bottom left/right. 
 ## TODO
-Create a script for Chopping_Board that handles vegetable chopping and stops 
-player movement when doing so. Customer.GenerateTime() has a bug that causes it to
-show a larger time remaining that specified; fix that. 
+Create power ups. 
 
 Fix up code duplication as much as possible.
 
