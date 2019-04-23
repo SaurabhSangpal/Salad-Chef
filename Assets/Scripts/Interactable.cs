@@ -15,7 +15,6 @@ public class Interactable : MonoBehaviour
     {
         if(Input.GetButtonDown(special) && gameobject)
         {
-            Debug.Log("Pressed: " + special);
             return true;
         } else
             return false;
@@ -29,11 +28,9 @@ public class Interactable : MonoBehaviour
     {
         if (collider.CompareTag("Interactable"))
         {
-            Debug.Log(collider.name);
             gameobject = collider.gameObject;
         } else if (collider.CompareTag("Customer"))
         {
-            Debug.Log("Customer: " + collider.name);
             gameobject = collider.gameObject;
         }
     }

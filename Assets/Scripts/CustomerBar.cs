@@ -9,11 +9,13 @@ public class CustomerBar : MonoBehaviour
     public Image CustomerBarForeground;
 
     private float time = 1;
+    private float CustomerTotalTime;
 
     void Start()
     {
         CustomerBarForeground = GetComponent<Image>();
         UpdateCustomerBar();
+        CustomerTotalTime = customer.TotalTime;
     }
 
     /// <summary>
@@ -32,6 +34,12 @@ public class CustomerBar : MonoBehaviour
 
     void Update()
     {
+        // Check if the customer has reset
+        if (CustomerTotalTime != customer.TotalTime)
+        {
+            time = 1;
+            CustomerTotalTime = customer.TotalTime;
+        }
         UpdateCustomerBar();
     }
 }

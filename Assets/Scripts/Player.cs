@@ -8,7 +8,13 @@ public class Player : MonoBehaviour
     public float speed;
     Vector3 move;
     float vertical, horizontal;
-    private Score score;
+    public Score score;
+    // Used to calculate time to wait while cutting vegetables
+    private float TimeToWait, Waiting;
+    // Total time left for a player
+    public float TimeLeft = 120.0f;
+    private string CustomerName;
+    private Customer customer;
 
     /// <summary>
     /// Sets up movement depending on the public movement variables
@@ -39,13 +45,51 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
+    void CheckCustomer()
+    {
+        if (score.interactable.PollForInput())
+        {
+            if (score.interactable.gameobject.tag == "Customer")
+            {
+                // Give the produced salad
+                CustomerName = score.interactable.gameobject.name;
+                customer = GetComponent<Customer>();
+            }
+        }
+    }
+
+    void SetWaitTime()
+    {
+        if (score.inventory.Count > 0)
+        {
+            foreach (int x in score.inventory)
+            {
+                TimeToWait = score.TimeRequired[x];
+            }
+        }
+    }
+
     void Start()
     {
         score = GetComponent<Score>();
+        TimeToWait = Waiting = 0.0f;
     }
 
     void Update()
     {
         SetMovement();
+        CheckCustomer();
+        if (Waiting >= TimeToWait)
+        {
+            TimeToWait = Waiting = 0.0f;
+            score.inventory.Clear();
+            speed = 8.0f;
+        }
+        else
+        {
+            Waiting += Time.deltaTime;
+            speed = 0.0f;
+        }
+        TimeLeft -= Time.deltaTime;
     }
 }

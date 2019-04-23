@@ -55,7 +55,7 @@ public class Customer : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(TotalTime);
+        //Debug.Log(TotalTime);
     }
 
     /// <summary>
@@ -66,7 +66,21 @@ public class Customer : MonoBehaviour
         time += Time.deltaTime;
         if (time >= TotalTime)
         {
+            
             // Failed the task
+            Awake();
+        }
+    }
+
+    void CheckSalad(List<int> salad)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!salad.Contains(i))
+            {
+                // Get angry
+                TotalTime /= 2;
+            }
         }
     }
 
@@ -80,9 +94,10 @@ public class Customer : MonoBehaviour
         RandomizeArray();
         foreach (int x in numbers)
         {
-            Debug.Log(Veg[x]);
+            //Debug.Log(Veg[x]);
         }
         GenerateTime();
+        Debug.Log("Customer Created");
     }
 
     void Update()
