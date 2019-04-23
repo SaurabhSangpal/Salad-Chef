@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float TimeToWait, Waiting;
     // Total time left for a player
     public float TimeLeft = 120.0f;
+    private Booster booster;
 
     /// <summary>
     /// Sets up movement depending on the public movement variables
@@ -56,8 +57,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        score = GetComponent<Score>();
-        TimeToWait = Waiting = 0.0f;
+        score       = GetComponent<Score>();
+        booster     = GetComponent<Booster>();
+        TimeToWait  = Waiting = 0.0f;
     }
 
     void Update()

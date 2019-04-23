@@ -5,32 +5,30 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public string PlayerName;
-    public List<int> inventory = new List<int>();
+    public List<int> inventory;
     // Stores the total score of a player
     public int PlayerScore;
     public Interactable interactable = null;
     // Time required to cut each element
     public float[] TimeRequired = new float[] {3.0f, 3.0f, 4.0f, 4.5f, 6.0f, 5.5f};
-    public List<int> ProcessedVegetables = new List<int>();
+    public List<int> ProcessedVegetables;
     // Access customers; set within Sandbox
     public Customer[] customers = new Customer[5];
-    //public List<Customer> customers = new List<Customer>();
 
     void Start()
     {
         interactable = GetComponent<Interactable>();
+        inventory = new List<int>();
+        ProcessedVegetables = new List<int>();
         inventory.Capacity = 2;
         ProcessedVegetables.Capacity = 3;
-        inventory.Clear();
-        ProcessedVegetables.Clear();
     }
 
     void CheckGameObject()
     {
         if (interactable.PollForInput())
         {
-            Debug.Log(interactable.gameobject.name);
+            //Debug.Log(interactable.gameobject.name);
             switch (interactable.gameobject.name)
             {
                 default:
@@ -68,10 +66,7 @@ public class Score : MonoBehaviour
     void AddToInventory(int i)
     {
         Debug.Log("Adding to inventory: " + i);
-        if (inventory.Count < 2)
-        {
-            inventory.Add(i);
-        }
+        inventory.Add(i);
     }
 
     /// <summary>
@@ -80,7 +75,7 @@ public class Score : MonoBehaviour
     /// </summary>
     void GetCustomer()
     {
-        if (interactable.PollForInput())
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Customer")
         {
             string GameObjectName = interactable.gameobject.name;
             switch (GameObjectName.Last())

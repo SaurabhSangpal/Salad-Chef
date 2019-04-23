@@ -22,9 +22,9 @@ public class CustomerText : MonoBehaviour
 
     void UpdateText()
     {
-        for (int i = 0; i < 3; i++)
+        foreach (int i in customer.items)
         {
-            text.text += customer.Veg[customer.numbers[i]];
+            text.text += customer.Veg[i];
             text.text += ' ';
         }
     }
