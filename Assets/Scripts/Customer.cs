@@ -5,14 +5,23 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
+    // Set used for randomization and set used to store final items after randomization
     public int[] numbers = new int[] { 0, 1, 2, 3, 4, 5 };
     public int[] items = new int[3];
+
+    // Set of vegetable names
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
+
+    // Total time before the customer leaves, and a timer that counts upwards until TotalTime
     public  float TotalTime, time;
-    // Random number between 2 and 3
-    public int NumberOfElements;
+
+    // Used for randomization
     static System.Random random;
 
+    // Check if the customer is angry, used in Player.cs or Score.cs
+    public bool isAngry = false;
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
     /// Used to create a random array that includes all the elements from Veg; we will pick the
     /// first two/three elements from here as the order
@@ -31,8 +40,7 @@ public class Customer : MonoBehaviour
     /// </summary>
     void GenerateTime()
     {
-        TotalTime = 20.0f;
-        NumberOfElements = 3;
+        TotalTime = 40.0f;
 
         for(int i = 0; i < 3; i++)
         {
@@ -69,16 +77,21 @@ public class Customer : MonoBehaviour
     void TimePassed()
     {
         time += Time.deltaTime;
-        if (time >= TotalTime)
+        if (time >= TotalTime && isAngry)
         {
+            Awake();
             // Failed the task
+        }
+        else if (time >= TotalTime && !isAngry)
+        {
             Awake();
         }
     }
 
-    // If player gets the wrong salad, execute
+    // If player brings the wrong salad, execute
     public void GetAngry()
     {
+        isAngry = true;
         TotalTime /= 2;
     }
 
@@ -90,10 +103,6 @@ public class Customer : MonoBehaviour
         random = new System.Random(int.Parse(System.Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
         time = TotalTime = 0.0f;
         RandomizeArray();
-        foreach (int x in numbers)
-        {
-            //Debug.Log(Veg[x]);
-        }
         GenerateTime();
         Debug.Log("Customer Created");
     }

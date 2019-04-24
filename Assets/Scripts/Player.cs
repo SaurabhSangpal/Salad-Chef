@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Movement controls
     public string up, down, left, right;
     public float speed;
     Vector3 move;
     float vertical, horizontal;
+
     public Score score;
+
     // Used to calculate time to wait while cutting vegetables
     private float TimeToWait, Waiting;
+
     // Total time left for a player
     public float TimeLeft = 120.0f;
     private Booster booster;
@@ -46,11 +50,12 @@ public class Player : MonoBehaviour
 
     void SetWaitTime()
     {
-        if (score.inventory.Count > 0)
+        if (score.Item1 != -1)
         {
-            foreach (int x in score.inventory)
+            TimeToWait = score.TimeRequired[score.Item1];
+            if (score.Item2 != -1)
             {
-                TimeToWait = score.TimeRequired[x];
+                TimeToWait += score.TimeRequired[score.Item2];
             }
         }
     }
@@ -68,7 +73,7 @@ public class Player : MonoBehaviour
         if (Waiting >= TimeToWait)
         {
             TimeToWait = Waiting = 0.0f;
-            score.inventory.Clear();
+            //score.PushToProcessed();
             speed = 8.0f;
         }
         else

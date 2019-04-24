@@ -549,7 +549,7 @@ MonoBehaviour:
   - Cauliflower
   TotalTime: 0
   time: 0
-  NumberOfElements: 0
+  isAngry: 0
 --- !u!58 &278848128
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1014,7 +1014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13df33f1a9b5594489cd96e4d986240a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 0000000000000000
+  Item1: 0
+  Item2: 0
+  ProcessedVegetables: 
   PlayerScore: 0
   interactable: {fileID: 0}
   TimeRequired:
@@ -1024,7 +1026,6 @@ MonoBehaviour:
   - 4.5
   - 6
   - 5.5
-  ProcessedVegetables: 000000000000000000000000
   customers:
   - {fileID: 1324949523}
   - {fileID: 1709745593}
@@ -1227,7 +1228,7 @@ MonoBehaviour:
   - Cauliflower
   TotalTime: 0
   time: 0
-  NumberOfElements: 0
+  isAngry: 0
 --- !u!58 &405364617
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3523,7 +3524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13df33f1a9b5594489cd96e4d986240a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 0000000000000000
+  Item1: 0
+  Item2: 0
+  ProcessedVegetables: 
   PlayerScore: 0
   interactable: {fileID: 0}
   TimeRequired:
@@ -3533,7 +3536,6 @@ MonoBehaviour:
   - 4.5
   - 6
   - 5.5
-  ProcessedVegetables: 000000000000000000000000
   customers:
   - {fileID: 1324949523}
   - {fileID: 1709745593}
@@ -5259,7 +5261,7 @@ MonoBehaviour:
   - Cauliflower
   TotalTime: 0
   time: 0
-  NumberOfElements: 0
+  isAngry: 0
 --- !u!58 &1324949524
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6008,7 +6010,7 @@ MonoBehaviour:
   - Cauliflower
   TotalTime: 0
   time: 0
-  NumberOfElements: 0
+  isAngry: 0
 --- !u!58 &1609583716
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6204,7 +6206,7 @@ MonoBehaviour:
   - Cauliflower
   TotalTime: 0
   time: 0
-  NumberOfElements: 0
+  isAngry: 0
 --- !u!58 &1709745594
 CircleCollider2D:
   m_ObjectHideFlags: 0

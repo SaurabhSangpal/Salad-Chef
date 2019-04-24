@@ -6,7 +6,7 @@ public class Booster : MonoBehaviour
 {
     private Player player;
     private float BoosterVar = 10.0f;
-    private float Timer = 0.0f;
+    private float Timer = 10.0f;
     public short BoosterActive = 0;
 
     void Start()
@@ -67,7 +67,7 @@ public class Booster : MonoBehaviour
 
     void Update()
     {
-        if (BoosterActive != 1)
+        if (BoosterActive != 0)
         {
             SetBooster();
         }
