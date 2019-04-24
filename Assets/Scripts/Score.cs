@@ -74,10 +74,14 @@ public class Score : MonoBehaviour
         Item1 = Item2 = -1;
     }
     
+    /// <summary>
+    /// Checks if Item1 or Item2 is free and adds item to the first one that is
+    /// free. If none of them is free, item is not added to the inventory.
+    /// </summary>
+    /// <param name="i">The value to be added to the inventory</param>
     void AddToInventory(int i)
     {
         Debug.Log("Adding to inventory: " + i);
-        //Inventory.Add(i);
         if (Item1 == -1)
         {
             Item1 = i;
@@ -159,6 +163,9 @@ public class Score : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds items from the inventory to ProcessedVegetables
+    /// </summary>
     public void PushToProcessed()
     {
         if (Item1 != -1)
