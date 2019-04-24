@@ -5,32 +5,37 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public string PlayerName;
-    public List<int> inventory = new List<int>();
-    // Stores the total score of a player
-    public int PlayerScore;
-    public Interactable interactable = null;
-    // Time required to cut each element
-    public float[] TimeRequired = new float[] {3.0f, 3.0f, 4.0f, 4.5f, 6.0f, 5.5f};
+    // Player inventory and score
+    public int Item1, Item2;
     public List<int> ProcessedVegetables = new List<int>();
+    public int PlayerScore;
+
+    // Interactable
+    public Interactable interactable = null;
+
+    // Time required to cut each element and points awarded
+    public float[] TimeRequired = new float[] { 1.0f, 1.0f, 2.0f, 2.5f, 4.0f, 3.5f };
+    private short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
+
     // Access customers; set within Sandbox
     public Customer[] customers = new Customer[5];
-    //public List<Customer> customers = new List<Customer>();
 
     void Start()
     {
         interactable = GetComponent<Interactable>();
-        inventory.Capacity = 2;
+        Item1 = Item2 = -1;
         ProcessedVegetables.Capacity = 3;
-        inventory.Clear();
-        ProcessedVegetables.Clear();
     }
 
+    /// <summary>
+    /// Checks where a player has pressed the special key and adds the vegetables to the
+    /// inventory or throws the vegetables into the trash can
+    /// </summary>
     void CheckGameObject()
     {
         if (interactable.PollForInput())
         {
-            Debug.Log(interactable.gameobject.name);
+            //Debug.Log(interactable.gameobject.name);
             switch (interactable.gameobject.name)
             {
                 default:
@@ -60,17 +65,30 @@ public class Score : MonoBehaviour
         }
     }
 
-    void FlushInventory()
+    /// <summary>
+    /// Clears the inventory
+    /// </summary>
+    public void FlushInventory()
     {
-        inventory.Clear();
+        //Inventory.Clear();
+        Item1 = Item2 = -1;
     }
     
     void AddToInventory(int i)
     {
         Debug.Log("Adding to inventory: " + i);
-        if (inventory.Count < 2)
+        //Inventory.Add(i);
+        if (Item1 == -1)
         {
-            inventory.Add(i);
+            Item1 = i;
+        }
+        else
+        {
+            if (Item2 == -1)
+            {
+                Item2 = i;
+            } else
+                Debug.Log("Inventory full!");
         }
     }
 
@@ -80,7 +98,7 @@ public class Score : MonoBehaviour
     /// </summary>
     void GetCustomer()
     {
-        if (interactable.PollForInput())
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Customer")
         {
             string GameObjectName = interactable.gameobject.name;
             switch (GameObjectName.Last())
@@ -137,13 +155,32 @@ public class Score : MonoBehaviour
     {
         foreach (int i in ProcessedVegetables)
         {
-            PlayerScore += (int)TimeRequired[i];
+            PlayerScore += (int)PointsAwarded[i];
         }
+    }
+
+    public void PushToProcessed()
+    {
+        if (Item1 != -1)
+        {
+            ProcessedVegetables.Add(Item1);
+            if (Item2 != -1)
+            {
+                ProcessedVegetables.Add(Item2);
+            }
+        }
+        FlushInventory();
     }
 
     void Update()
     {
         CheckGameObject();
         GetCustomer();
+        // Check if Processed Vegetables go above 3 and then remove the last element if it
+        // does
+        if (ProcessedVegetables.Count > 3)
+        {
+            _ = ProcessedVegetables.Remove(ProcessedVegetables.Count);
+        }
     }
 }

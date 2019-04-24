@@ -52,8 +52,7 @@ public class HUD : MonoBehaviour
         } else if (DisplayValue == 1)
         {
             GetTime();
-            text.text = "";
-            text.text += player.TimeLeft;
+            text.text = player.TimeLeft.ToString("0.0");
         }
     }
 }

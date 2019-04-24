@@ -12,23 +12,22 @@ public class ChoppingBoard : MonoBehaviour
         if (player.score.interactable.PollForInput() && player.score.interactable.gameobject.name == this.name)
         {
             Debug.Log("Player chop: " + this.name);
-            foreach (int i in player.score.inventory)
-            {
-                Debug.Log("Player inventory: " + player.name + " " + i);
-            }
             Choppy();
         }
     }
 
     void Choppy()
     {
-        if (player.score.inventory.Count > 0)
+        TimeToCut = 0.0f;
+        if (player.score.Item1 != -1)
         {
-            foreach (int x in player.score.inventory)
-            {
-                CalculateTime((short)x);
-            }
+            CalculateTime((short)player.score.Item1);
         }
+        if (player.score.Item2 != -1)
+        {
+            CalculateTime((short)player.score.Item2);
+        }
+        player.score.PushToProcessed();
     }
 
     void CalculateTime(short x)
