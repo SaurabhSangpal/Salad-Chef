@@ -7,57 +7,39 @@ public class ChoppingBoard : MonoBehaviour
     public Player player;
     private float TimeToCut;
 
+    void Start()
+    {
+        TimeToCut = 0.0f;
+    }
+
     void ChopChop()
     {
         if (player.score.interactable.PollForInput() && player.score.interactable.gameobject.name == this.name)
         {
-            Debug.Log("Player chop: " + this.name);
-            Choppy();
+            Debug.Log("Player chop: " + name);
+            TimeToCut = 0.0f;
+            if (player.score.Item1 != -1)
+            {
+                TimeToCut += player.score.TimeRequired[player.score.Item1];
+            }
+            if (player.score.Item2 != -1)
+            {
+                TimeToCut += player.score.TimeRequired[player.score.Item2];
+            }
+            Debug.Log("Time to cut: " + TimeToCut);
+            player.score.PushToProcessed();
         }
-    }
-
-    void Choppy()
-    {
-        TimeToCut = 0.0f;
-        if (player.score.Item1 != -1)
-        {
-            CalculateTime((short)player.score.Item1);
-        }
-        if (player.score.Item2 != -1)
-        {
-            CalculateTime((short)player.score.Item2);
-        }
-        player.score.PushToProcessed();
-    }
-
-    void CalculateTime(short x)
-    {
-        TimeToCut += player.score.TimeRequired[x];
-        Debug.Log("Time to cut: " + TimeToCut);
-    }
-
-    void PauseMovement()
-    {
-        if (TimeToCut > 0.0f)
-        {
-            TimeToCut -= Time.deltaTime;
-            player.speed = 0.0f;
-        }
-        else
-        {
-            player.speed = 8.0f;
-        }
-    }
-
-    void Start()
-    {
-        TimeToCut = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         ChopChop();
-        PauseMovement();
+        if (TimeToCut > 0.0f)
+        {
+            TimeToCut -= Time.deltaTime;
+            player.speed = 0.0f;
+        } else
+            player.speed = 8.0f;
     }
 }

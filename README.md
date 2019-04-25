@@ -28,11 +28,11 @@ Player timer shows up at bottom left/right.
 Game timer shows up at top right corner.
 
 ## TODO
-Fix InventoryHUD.cs.
+Fix cutting time (it is taking too long)
 Spawn boosters when player gives correct combination within 70% of customer
 waiting time.
 
 # Disclaimer
-None of the images (except bar2.png) used in this game are created or owned 
+None of the images (except bar2.png) used in this game are created or owned
 by me. All of the images used in this game are licensed under a Creative
 Commons license.

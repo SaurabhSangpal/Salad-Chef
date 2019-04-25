@@ -12,9 +12,6 @@ public class Player : MonoBehaviour
 
     public Score score;
 
-    // Used to calculate time to wait while cutting vegetables
-    private float TimeToWait, Waiting;
-
     // Total time left for a player
     public float TimeLeft = 120.0f;
     private Booster booster;
@@ -48,39 +45,14 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
-    void SetWaitTime()
-    {
-        if (score.Item1 != -1)
-        {
-            TimeToWait = score.TimeRequired[score.Item1];
-            if (score.Item2 != -1)
-            {
-                TimeToWait += score.TimeRequired[score.Item2];
-            }
-        }
-    }
-
     void Start()
     {
         score       = GetComponent<Score>();
         booster     = GetComponent<Booster>();
-        TimeToWait  = Waiting = 0.0f;
     }
 
     void Update()
     {
         SetMovement();
-        if (Waiting >= TimeToWait)
-        {
-            TimeToWait = Waiting = 0.0f;
-            //score.PushToProcessed();
-            speed = 8.0f;
-        }
-        else
-        {
-            Waiting += Time.deltaTime;
-            speed = 0.0f;
-        }
-        TimeLeft -= Time.deltaTime;
     }
 }

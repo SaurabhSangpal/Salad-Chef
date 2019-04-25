@@ -14,7 +14,8 @@ public class Score : MonoBehaviour
     public Interactable interactable = null;
 
     // Time required to cut each element and points awarded
-    public float[] TimeRequired = new float[] { 1.0f, 1.0f, 2.0f, 2.5f, 4.0f, 3.5f };
+    public float[] TimeRequired = new float[] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
+
     private short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
     // Access customers; set within Sandbox
@@ -74,10 +75,14 @@ public class Score : MonoBehaviour
         Item1 = Item2 = -1;
     }
     
+    /// <summary>
+    /// Checks if Item1 or Item2 is free and adds item to the first one that is
+    /// free. If none of them is free, item is not added to the inventory.
+    /// </summary>
+    /// <param name="i">The value to be added to the inventory</param>
     void AddToInventory(int i)
     {
         Debug.Log("Adding to inventory: " + i);
-        //Inventory.Add(i);
         if (Item1 == -1)
         {
             Item1 = i;
@@ -159,6 +164,9 @@ public class Score : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds items from the inventory to ProcessedVegetables
+    /// </summary>
     public void PushToProcessed()
     {
         if (Item1 != -1)
