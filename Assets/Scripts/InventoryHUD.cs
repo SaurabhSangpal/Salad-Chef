@@ -22,7 +22,7 @@ public class InventoryHUD : MonoBehaviour
     /// </summary>
     void GetInventory()
     {
-        if (player.score.Item1 != -1 && ItemsDisplayed < 2)
+        if (player.score.Item1 != -1 && ItemsDisplayed < 1)
         {
             text.text += Veg[player.score.Item1];
             text.text += ' ';
@@ -39,10 +39,15 @@ public class InventoryHUD : MonoBehaviour
     void CleanInventory()
     {
         text.text = "";
+        ItemsDisplayed = 0;
     }
 
     void Update()
     {
         GetInventory();
+        if (player.score.Item1 == -1)
+        {
+            CleanInventory();
+        }
     }
 }
