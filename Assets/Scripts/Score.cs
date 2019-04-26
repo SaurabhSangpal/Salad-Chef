@@ -14,7 +14,7 @@ public class Score : MonoBehaviour
     public Interactable interactable = null;
 
     // Time required to cut each element and points awarded
-    public float[] TimeRequired = new float[] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
+    public readonly float[] TimeRequired = new float[6] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
 
     private short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
