@@ -20,6 +20,8 @@ public class Score : MonoBehaviour
 
     // Access customers; set within Sandbox
     public Customer[] customers = new Customer[5];
+    // Stores value for the last customer whom the player has given wrong salad
+    private Customer WrongCustomer;
 
     void Start()
     {
@@ -147,8 +149,12 @@ public class Score : MonoBehaviour
         if (tmp)
         {
             AwardPoints();
-        } else
+        } 
+        else { 
             cust.GetAngry();
+            DeductPoints();
+            WrongCustomer = cust;
+        }
         ProcessedVegetables.Clear();
     }
 
@@ -162,6 +168,11 @@ public class Score : MonoBehaviour
         {
             PlayerScore += (int)PointsAwarded[i];
         }
+    }
+
+    void DeductPoints()
+    {
+        PlayerScore -= 3;
     }
 
     /// <summary>
