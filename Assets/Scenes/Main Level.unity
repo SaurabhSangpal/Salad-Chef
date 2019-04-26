@@ -2303,6 +2303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
+  ShowBooster: 0
 --- !u!1001 &685881182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4459,6 +4460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
+  ShowBooster: 0
 --- !u!4 &1109231176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6467033387649284466, guid: 7bdf23dd294922446a95ebca574b0140,
@@ -5886,6 +5888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
+  ShowBooster: 0
 --- !u!1001 &1513946862
 PrefabInstance:
   m_ObjectHideFlags: 0

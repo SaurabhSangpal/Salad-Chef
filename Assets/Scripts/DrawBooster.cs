@@ -9,6 +9,8 @@ public class DrawBooster : MonoBehaviour
     private Image image;
 
     // Will handle the position of the displayed image
+    // Movement range : x -> -650 - 650
+    //                  y -> -245 - 245
     private Vector3 move;
 
     public bool ShowBooster;
@@ -17,6 +19,7 @@ public class DrawBooster : MonoBehaviour
     {
         image = GetComponent<Image>();
         ShowBooster = false;
+        PlaceImage();
     }
 
     /// <summary>
@@ -33,6 +36,18 @@ public class DrawBooster : MonoBehaviour
         {
             image.gameObject.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Gets a random position that the player can access and places the booster
+    /// image there
+    /// </summary>
+    void PlaceImage()
+    {
+        move = new Vector2();
+        move.x = Random.Range(-650, 651);
+        move.y = Random.Range(-245, 246);
+        image.rectTransform.localPosition = move;
     }
 
     void Update()
