@@ -2225,10 +2225,11 @@ GameObject:
   - component: {fileID: 669122369}
   - component: {fileID: 669122371}
   - component: {fileID: 669122370}
+  - component: {fileID: 669122373}
   - component: {fileID: 669122372}
   m_Layer: 5
   m_Name: Speed
-  m_TagString: Untagged
+  m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2303,6 +2304,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
+  ShowBooster: 0
+--- !u!58 &669122373
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669122368}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -6.6, y: 0}
+  serializedVersion: 2
+  m_Radius: 49.7
 --- !u!1001 &685881182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4381,10 +4399,11 @@ GameObject:
   - component: {fileID: 1099814773}
   - component: {fileID: 1099814775}
   - component: {fileID: 1099814774}
+  - component: {fileID: 1099814777}
   - component: {fileID: 1099814776}
   m_Layer: 5
   m_Name: Time
-  m_TagString: Untagged
+  m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4459,6 +4478,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
+  ShowBooster: 0
+--- !u!58 &1099814777
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099814772}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 49.91
 --- !u!4 &1109231176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6467033387649284466, guid: 7bdf23dd294922446a95ebca574b0140,
@@ -5808,10 +5844,11 @@ GameObject:
   - component: {fileID: 1495095588}
   - component: {fileID: 1495095590}
   - component: {fileID: 1495095589}
+  - component: {fileID: 1495095592}
   - component: {fileID: 1495095591}
   m_Layer: 5
   m_Name: Points
-  m_TagString: Untagged
+  m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5886,6 +5923,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
+  ShowBooster: 0
+--- !u!58 &1495095592
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495095587}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 48.48
 --- !u!1001 &1513946862
 PrefabInstance:
   m_ObjectHideFlags: 0

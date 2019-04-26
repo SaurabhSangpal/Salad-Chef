@@ -28,7 +28,6 @@ Player timer shows up at bottom left/right.
 Game timer shows up at top right corner.
 
 ## TODO
-Fix cutting time (it is taking too long)
 Spawn boosters when player gives correct combination within 70% of customer
 waiting time.
 

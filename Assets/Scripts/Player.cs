@@ -54,5 +54,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         SetMovement();
+        if (TimeLeft > 0)
+        {
+            TimeLeft -= Time.deltaTime;
+        } else
+            Destroy(this.gameObject);
     }
 }

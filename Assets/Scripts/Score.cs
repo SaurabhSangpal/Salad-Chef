@@ -14,12 +14,14 @@ public class Score : MonoBehaviour
     public Interactable interactable = null;
 
     // Time required to cut each element and points awarded
-    public float[] TimeRequired = new float[] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
+    public readonly float[] TimeRequired = new float[6] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
 
     private short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
     // Access customers; set within Sandbox
     public Customer[] customers = new Customer[5];
+    // Stores value for the last customer whom the player has given wrong salad
+    private Customer WrongCustomer;
 
     void Start()
     {
@@ -147,8 +149,12 @@ public class Score : MonoBehaviour
         if (tmp)
         {
             AwardPoints();
-        } else
+        } 
+        else { 
             cust.GetAngry();
+            DeductPoints();
+            WrongCustomer = cust;
+        }
         ProcessedVegetables.Clear();
     }
 
@@ -162,6 +168,11 @@ public class Score : MonoBehaviour
         {
             PlayerScore += (int)PointsAwarded[i];
         }
+    }
+
+    void DeductPoints()
+    {
+        PlayerScore -= 3;
     }
 
     /// <summary>
