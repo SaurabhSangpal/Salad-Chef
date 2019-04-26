@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         if (TimeLeft > 0)
         {
             TimeLeft -= Time.deltaTime;
-        }
+        } else
+            Destroy(this.gameObject);
     }
 }
