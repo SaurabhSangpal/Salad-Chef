@@ -107,6 +107,11 @@ public class Customer : MonoBehaviour
         Debug.Log("Customer Created");
     }
 
+    public void CreateNewCustomer()
+    {
+        Awake();
+    }
+
     void Update()
     {
         TimePassed();

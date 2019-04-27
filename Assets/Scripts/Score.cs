@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     // Time required to cut each element and points awarded
     public readonly float[] TimeRequired = new float[6] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
 
-    private short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
+    private readonly short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
     // Access customers; set within Sandbox
     public Customer[] customers = new Customer[5];
@@ -149,6 +149,7 @@ public class Score : MonoBehaviour
         if (tmp)
         {
             AwardPoints();
+            cust.CreateNewCustomer();
         } 
         else { 
             cust.GetAngry();
