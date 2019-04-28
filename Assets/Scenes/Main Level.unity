@@ -5286,7 +5286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 915684815}
   player2: {fileID: 347413701}
-  gametimer: {fileID: 1111436395}
 --- !u!4 &1285102791
 Transform:
   m_ObjectHideFlags: 0
