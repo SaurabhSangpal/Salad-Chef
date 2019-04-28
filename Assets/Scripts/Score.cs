@@ -16,16 +16,20 @@ public class Score : MonoBehaviour
     // Time required to cut each element and points awarded
     public readonly float[] TimeRequired = new float[6] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
 
-    private short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
+    private readonly short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
     // Access customers; set within Sandbox
     public Customer[] customers = new Customer[5];
     // Stores value for the last customer whom the player has given wrong salad
     private Customer WrongCustomer;
 
+    // Booster class
+    public Booster booster;
+
     void Start()
     {
         interactable = GetComponent<Interactable>();
+        booster = GetComponent<Booster>();
         Item1 = Item2 = -1;
         ProcessedVegetables.Capacity = 3;
     }
@@ -149,6 +153,13 @@ public class Score : MonoBehaviour
         if (tmp)
         {
             AwardPoints();
+            // Pick a random booster
+            Debug.Log((cust.time / cust.TotalTime) * 100);
+            if (cust.time / cust.TotalTime * 100 > 30)
+            {
+                booster.BoosterActive = (short)Random.Range(1, 4);
+            }
+            cust.CreateNewCustomer();
         } 
         else { 
             cust.GetAngry();
@@ -170,6 +181,9 @@ public class Score : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes points when player gives incorrect combination to the customer
+    /// </summary>
     void DeductPoints()
     {
         PlayerScore -= 3;
@@ -191,9 +205,23 @@ public class Score : MonoBehaviour
         FlushInventory();
     }
 
+    public bool CheckBooster()
+    {
+        if (interactable.PollForInput())
+        {
+            if (interactable.gameobject.tag == "Booster")
+            {
+                // Is a booster, pick it up
+                return true;
+            }
+        }
+        return false;
+    }
+
     void Update()
     {
         CheckGameObject();
+        CheckBooster();
         GetCustomer();
         // Check if Processed Vegetables go above 3 and then remove the last element if it
         // does

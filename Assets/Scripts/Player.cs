@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
 
     // Total time left for a player
     public float TimeLeft = 120.0f;
-    private Booster booster;
 
     /// <summary>
     /// Sets up movement depending on the public movement variables
@@ -45,10 +44,17 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
+    void AddBooster()
+    {
+        if (score.CheckBooster())
+        {
+            score.booster.SetBooster();
+        }
+    }
+
     void Start()
     {
         score       = GetComponent<Score>();
-        booster     = GetComponent<Booster>();
     }
 
     void Update()
