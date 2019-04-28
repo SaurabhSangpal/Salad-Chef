@@ -852,7 +852,6 @@ GameObject:
   - component: {fileID: 347413701}
   - component: {fileID: 347413704}
   - component: {fileID: 347413705}
-  - component: {fileID: 347413706}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Player
@@ -1019,32 +1018,13 @@ MonoBehaviour:
   ProcessedVegetables: 
   PlayerScore: 0
   interactable: {fileID: 0}
-  TimeRequired:
-  - 3
-  - 3
-  - 4
-  - 4.5
-  - 6
-  - 5.5
   customers:
   - {fileID: 1324949523}
   - {fileID: 1709745593}
   - {fileID: 278848127}
   - {fileID: 405364616}
   - {fileID: 1609583715}
---- !u!114 &347413706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347413698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dcb400deb5360441aedadccd0ca88f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoosterActive: 0
+  booster: {fileID: 0}
 --- !u!1 &351911540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,7 +3445,6 @@ GameObject:
   - component: {fileID: 915684815}
   - component: {fileID: 915684818}
   - component: {fileID: 915684819}
-  - component: {fileID: 915684820}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Player
@@ -3636,32 +3615,13 @@ MonoBehaviour:
   ProcessedVegetables: 
   PlayerScore: 0
   interactable: {fileID: 0}
-  TimeRequired:
-  - 3
-  - 3
-  - 4
-  - 4.5
-  - 6
-  - 5.5
   customers:
   - {fileID: 1324949523}
   - {fileID: 1709745593}
   - {fileID: 278848127}
   - {fileID: 405364616}
   - {fileID: 1609583715}
---- !u!114 &915684820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915684812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dcb400deb5360441aedadccd0ca88f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoosterActive: 0
+  booster: {fileID: 0}
 --- !u!1001 &919056941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5306,7 +5266,7 @@ GameObject:
   - component: {fileID: 1285102791}
   - component: {fileID: 1285102790}
   m_Layer: 0
-  m_Name: GamePause
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5324,6 +5284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a6a044bfd54f347870741ed2433628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 915684815}
+  player2: {fileID: 347413701}
+  gametimer: {fileID: 1111436395}
 --- !u!4 &1285102791
 Transform:
   m_ObjectHideFlags: 0

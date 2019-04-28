@@ -23,9 +23,13 @@ public class Score : MonoBehaviour
     // Stores value for the last customer whom the player has given wrong salad
     private Customer WrongCustomer;
 
+    // Booster class
+    public Booster booster;
+
     void Start()
     {
         interactable = GetComponent<Interactable>();
+        booster = GetComponent<Booster>();
         Item1 = Item2 = -1;
         ProcessedVegetables.Capacity = 3;
     }
@@ -149,6 +153,12 @@ public class Score : MonoBehaviour
         if (tmp)
         {
             AwardPoints();
+            // Pick a random booster
+            Debug.Log((cust.time / cust.TotalTime) * 100);
+            if (cust.time / cust.TotalTime * 100 > 30)
+            {
+                booster.BoosterActive = (short)Random.Range(1, 4);
+            }
             cust.CreateNewCustomer();
         } 
         else { 
@@ -171,6 +181,9 @@ public class Score : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes points when player gives incorrect combination to the customer
+    /// </summary>
     void DeductPoints()
     {
         PlayerScore -= 3;
@@ -192,9 +205,23 @@ public class Score : MonoBehaviour
         FlushInventory();
     }
 
+    public bool CheckBooster()
+    {
+        if (interactable.PollForInput())
+        {
+            if (interactable.gameobject.tag == "Booster")
+            {
+                // Is a booster, pick it up
+                return true;
+            }
+        }
+        return false;
+    }
+
     void Update()
     {
         CheckGameObject();
+        CheckBooster();
         GetCustomer();
         // Check if Processed Vegetables go above 3 and then remove the last element if it
         // does
