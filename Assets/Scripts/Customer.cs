@@ -13,7 +13,7 @@ public class Customer : MonoBehaviour
     public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower" };
 
     // Total time before the customer leaves, and a timer that counts upwards until TotalTime
-    public  float TotalTime, time;
+    public float TotalTime, time;
 
     // Used for randomization
     static System.Random random;
@@ -29,8 +29,7 @@ public class Customer : MonoBehaviour
     void RandomizeArray()
     {
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             items[i] = numbers[i];
         }
     }
@@ -41,11 +40,8 @@ public class Customer : MonoBehaviour
     void GenerateTime()
     {
         TotalTime = 40.0f;
-
-        for(int i = 0; i < 3; i++)
-        {
-            switch (numbers[i])
-            {
+        for (int i = 0; i < 3; i++) {
+            switch (numbers[i]) {
             case 0:
                 TotalTime += 5;
                 break;
@@ -74,12 +70,9 @@ public class Customer : MonoBehaviour
     void TimePassed()
     {
         time += Time.deltaTime;
-        if (time >= TotalTime && isAngry)
-        {
+        if (time >= TotalTime && isAngry) {
             Awake();
-        }
-        else if (time >= TotalTime && !isAngry)
-        {
+        } else if (time >= TotalTime && !isAngry) {
             Awake();
         }
     }

@@ -5,11 +5,13 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     private bool Paused = false;
+    private bool GameOver;
     public Player player1, player2;
     private float Timer;
 
     void Start()
     {
+        GameOver = false;
         Timer = 300.0f;
     }
 
@@ -23,8 +25,8 @@ public class Game : MonoBehaviour
 
     private void EndGame()
     {
-        if (player1.TimeLeft <= 0f || player2.TimeLeft <= 0f)
-        {
+        if (player1.TimeLeft <= 0f || player2.TimeLeft <= 0f) {
+            GameOver = true;
             PauseGame();
         }
     }
@@ -32,20 +34,20 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Pause if player presses Esc
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Paused = !Paused;
+        // Pause if player presses Esc, but do not toggle if GameOver is false
+        if (!GameOver) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                Paused = !Paused;
+            }
+        } else {
+            Paused = true;
         }
-        if (Paused)
-        {
-            Time.timeScale = 0;
-        } else
-            Time.timeScale = 1;
+
+        // Pause game if Paused is true
+        Time.timeScale = Paused ? 0 : 1;
 
         // Update timer
-        if (Timer >= 0)
-        {
+        if (Timer >= 0) {
             Timer -= Time.deltaTime;
         } else
             PauseGame();

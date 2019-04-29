@@ -21,8 +21,7 @@ public class HUD : MonoBehaviour
     // when we don't need to
     bool GetScore()
     {
-        if (score != player.score.PlayerScore)
-        {
+        if (score != player.score.PlayerScore) {
             score = player.score.PlayerScore;
             return true;
         } else
@@ -32,8 +31,7 @@ public class HUD : MonoBehaviour
 
     void GetTime()
     {
-        if (TimeLeft != player.TimeLeft)
-        {
+        if (TimeLeft != player.TimeLeft) {
             TimeLeft = player.TimeLeft;
         }
     }
@@ -46,11 +44,9 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        if (DisplayValue == 0)
-        {
+        if (DisplayValue == 0) {
             UpdateScore();
-        } else if (DisplayValue == 1)
-        {
+        } else if (DisplayValue == 1) {
             GetTime();
             text.text = player.TimeLeft.ToString("0.0");
         }

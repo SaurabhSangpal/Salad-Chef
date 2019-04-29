@@ -46,8 +46,7 @@ public class Player : MonoBehaviour
 
     void AddBooster()
     {
-        if (score.CheckBooster())
-        {
+        if (score.CheckBooster()) {
             score.booster.SetBooster();
         }
     }
@@ -60,8 +59,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         SetMovement();
-        if (TimeLeft > 0)
-        {
+        if (TimeLeft > 0) {
             TimeLeft -= Time.deltaTime;
         } else
             Destroy(this.gameObject);

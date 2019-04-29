@@ -9,10 +9,8 @@ public class HighScore : MonoBehaviour
     void Start()
     {
         HighScores = new string[5] { "HighScore1", "HighScore2", "HighScore3", "HighScore4", "HighScore5" };
-        foreach (string i in HighScores)
-        {
-            if (PlayerPrefs.GetInt(i, 0) == 0)
-            {
+        foreach (string i in HighScores) {
+            if (PlayerPrefs.GetInt(i, 0) == 0) {
                 Debug.Log("High score " + i + " is 0");
             }
         }
@@ -25,10 +23,8 @@ public class HighScore : MonoBehaviour
     /// <returns>String Corresponding to the value in HighScores array</returns>
     public string GetNextScore()
     {
-        foreach (string i in HighScores)
-        {
-            if (PlayerPrefs.GetInt(i, 0) != 0)
-            {
+        foreach (string i in HighScores) {
+            if (PlayerPrefs.GetInt(i, 0) != 0) {
                 return i;
             }
         }

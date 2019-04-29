@@ -6,7 +6,10 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     // Player inventory and score
-    public int Item1, Item2;
+    private int item1, item2;
+    public int Item1 { get => item1; set => item1 = value; }
+    public int Item2 { get => item2; set => item2 = value; }
+
     public List<int> ProcessedVegetables = new List<int>();
     public int PlayerScore;
 
@@ -40,13 +43,9 @@ public class Score : MonoBehaviour
     /// </summary>
     void CheckGameObject()
     {
-        if (interactable.PollForInput())
-        {
+        if (interactable.PollForInput()) {
             //Debug.Log(interactable.gameobject.name);
-            switch (interactable.gameobject.name)
-            {
-                default:
-                    break;
+            switch (interactable.gameobject.name) {
                 case "Trash_Can":
                     FlushInventory();
                     break;
@@ -89,14 +88,10 @@ public class Score : MonoBehaviour
     void AddToInventory(int i)
     {
         Debug.Log("Adding to inventory: " + i);
-        if (Item1 == -1)
-        {
+        if (Item1 == -1) {
             Item1 = i;
-        }
-        else
-        {
-            if (Item2 == -1)
-            {
+        } else {
+            if (Item2 == -1) {
                 Item2 = i;
             } else
                 Debug.Log("Inventory full!");
@@ -109,13 +104,9 @@ public class Score : MonoBehaviour
     /// </summary>
     void GetCustomer()
     {
-        if (interactable.PollForInput() && interactable.gameobject.tag == "Customer")
-        {
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Customer") {
             string GameObjectName = interactable.gameobject.name;
-            switch (GameObjectName.Last())
-            {
-                default:
-                    break;
+            switch (GameObjectName.Last()) {
                 case '1':
                     ProcessCustomer(customers[0]);
                     break;
@@ -143,25 +134,20 @@ public class Score : MonoBehaviour
     void ProcessCustomer(Customer cust)
     {
         bool tmp = true;
-        for (int i = 0; i < 3; i++)
-        {
-            if (!ProcessedVegetables.Contains(cust.items[i]))
-            {
+        for (int i = 0; i < 3; i++) {
+            if (!ProcessedVegetables.Contains(cust.items[i])) {
                 tmp = false;
             }
         }
-        if (tmp)
-        {
+        if (tmp) {
             AwardPoints();
             // Pick a random booster
             Debug.Log((cust.time / cust.TotalTime) * 100);
-            if (cust.time / cust.TotalTime * 100 > 30)
-            {
+            if (cust.time / cust.TotalTime * 100 > 30) {
                 booster.BoosterActive = (short)Random.Range(1, 4);
             }
             cust.CreateNewCustomer();
-        } 
-        else { 
+        } else {
             cust.GetAngry();
             DeductPoints();
             WrongCustomer = cust;
@@ -175,8 +161,7 @@ public class Score : MonoBehaviour
     /// </summary>
     void AwardPoints()
     {
-        foreach (int i in ProcessedVegetables)
-        {
+        foreach (int i in ProcessedVegetables) {
             PlayerScore += (int)PointsAwarded[i];
         }
     }
@@ -194,11 +179,9 @@ public class Score : MonoBehaviour
     /// </summary>
     public void PushToProcessed()
     {
-        if (Item1 != -1)
-        {
+        if (Item1 != -1) {
             ProcessedVegetables.Add(Item1);
-            if (Item2 != -1)
-            {
+            if (Item2 != -1) {
                 ProcessedVegetables.Add(Item2);
             }
         }
@@ -207,10 +190,8 @@ public class Score : MonoBehaviour
 
     public bool CheckBooster()
     {
-        if (interactable.PollForInput())
-        {
-            if (interactable.gameobject.tag == "Booster")
-            {
+        if (interactable.PollForInput()) {
+            if (interactable.gameobject.tag == "Booster") {
                 // Is a booster, pick it up
                 return true;
             }
@@ -225,8 +206,7 @@ public class Score : MonoBehaviour
         GetCustomer();
         // Check if Processed Vegetables go above 3 and then remove the last element if it
         // does
-        if (ProcessedVegetables.Count > 3)
-        {
+        if (ProcessedVegetables.Count > 3) {
             _ = ProcessedVegetables.Remove(ProcessedVegetables.Count);
         }
     }

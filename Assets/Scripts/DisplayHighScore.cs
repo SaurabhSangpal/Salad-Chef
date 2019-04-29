@@ -20,8 +20,7 @@ public class DisplayHighScore : MonoBehaviour
     void DisplayScore()
     {
         text.text = "";
-        for (int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
             text.text += i + 1;
             text.text += "                ";
             text.text += PlayerPrefs.GetInt(HighScores[i]);

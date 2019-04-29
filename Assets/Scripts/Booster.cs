@@ -67,15 +67,12 @@ public class Booster : MonoBehaviour
 
     void Update()
     {
-        if (BoosterActive != 0)
-        {
+        if (BoosterActive != 0) {
             SetBooster();
         }
-        if (Timer >= BoosterVar)
-        {
+        if (Timer >= BoosterVar) {
             player.speed = 8.0f;
-        } else
-        {
+        } else {
             Timer += Time.deltaTime;
         }
     }
