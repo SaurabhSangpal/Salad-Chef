@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Main Level");
     }
 
-    public void QuitGame()
+    public static void QuitGame()
     {
         Application.Quit();
     }

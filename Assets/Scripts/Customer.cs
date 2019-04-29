@@ -6,11 +6,11 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     // Set used for randomization and set used to store final items after randomization
-    public int[] numbers = new int[] { 0, 1, 2, 3, 4, 5 };
+    public int[] numbers = new[] { 0, 1, 2, 3, 4, 5 };
     public int[] items = new int[3];
 
     // Set of vegetable names
-    public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
+    public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower" };
 
     // Total time before the customer leaves, and a timer that counts upwards until TotalTime
     public  float TotalTime, time;
@@ -19,7 +19,7 @@ public class Customer : MonoBehaviour
     static System.Random random;
 
     // Check if the customer is angry, used in Player.cs or Score.cs
-    public bool isAngry = false;
+    public bool isAngry;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
@@ -64,11 +64,8 @@ public class Customer : MonoBehaviour
             case 5:
                 TotalTime += 10;
                 break;
-            default:
-                break;
             }
         }
-        //Debug.Log(TotalTime);
     }
 
     /// <summary>
@@ -80,7 +77,6 @@ public class Customer : MonoBehaviour
         if (time >= TotalTime && isAngry)
         {
             Awake();
-            // Failed the task
         }
         else if (time >= TotalTime && !isAngry)
         {
@@ -104,6 +100,7 @@ public class Customer : MonoBehaviour
         time = TotalTime = 0.0f;
         RandomizeArray();
         GenerateTime();
+        isAngry = false;
         Debug.Log("Customer Created");
     }
 
