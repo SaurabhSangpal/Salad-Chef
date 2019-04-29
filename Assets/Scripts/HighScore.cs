@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveToFile : MonoBehaviour
+public class HighScore : MonoBehaviour
 {
     public static string[] HighScores { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
         HighScores = new string[5] { "HighScore1", "HighScore2", "HighScore3", "HighScore4", "HighScore5" };
