@@ -24,8 +24,9 @@ public class HUD : MonoBehaviour
         if (score != player.score.PlayerScore) {
             score = player.score.PlayerScore;
             return true;
-        } else
+        } else {
             return false;
+        }
 
     }
 

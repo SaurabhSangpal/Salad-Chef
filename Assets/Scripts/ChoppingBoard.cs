@@ -37,7 +37,8 @@ public class ChoppingBoard : MonoBehaviour
         if (TimeToCut > 0.0f) {
             TimeToCut -= Time.deltaTime;
             player.speed = 0.0f;
-        } else
+        } else {
             player.speed = 8.0f;
+        }
     }
 }
