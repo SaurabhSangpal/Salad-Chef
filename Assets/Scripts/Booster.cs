@@ -45,8 +45,7 @@ public class Booster : MonoBehaviour
     /// </summary>
     public void SetBooster()
     {
-        switch (BoosterActive)
-        {
+        switch (BoosterActive) {
             default:
                 break;
             case 0:
@@ -54,15 +53,17 @@ public class Booster : MonoBehaviour
                 break;
             case 1:
                 SpeedBooster();
+                BoosterActive = 0;
                 break;
             case 2:
                 TimeBooster();
+                BoosterActive = 0;
                 break;
             case 3:
                 PointBooster();
+                BoosterActive = 0;
                 break;
         }
-        BoosterActive = 0;
     }
 
     void Update()

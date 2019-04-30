@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        score       = GetComponent<Score>();
+        score = GetComponent<Score>();
     }
 
     void Update()
@@ -56,7 +56,8 @@ public class Player : MonoBehaviour
         if (TimeLeft > 0) {
             TimeLeft -= Time.deltaTime;
         } else {
-            Destroy(this.gameObject);
+            speed = 0f;
+            //Destroy(gameObject);
         }
     }
 }

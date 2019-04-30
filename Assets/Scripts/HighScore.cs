@@ -5,15 +5,19 @@ using UnityEngine;
 public class HighScore : MonoBehaviour
 {
     public static string[] HighScores { get; set; }
+    private static int[] Scores { get; set; }
 
     void Start()
     {
         HighScores = new string[5] { "HighScore1", "HighScore2", "HighScore3", "HighScore4", "HighScore5" };
+        Scores = new int[5];
+
         foreach (string i in HighScores) {
             if (PlayerPrefs.GetInt(i, 0) == 0) {
                 Debug.Log("High score " + i + " is 0");
             }
         }
+        GetScores();
     }
 
     /// <summary>
@@ -29,5 +33,37 @@ public class HighScore : MonoBehaviour
             }
         }
         return "";
+    }
+
+    /// <summary>
+    /// Find where a particular value fits in the high score board
+    /// </summary>
+    /// <param name="Value">User high score</param>
+    public void AddToHighScore(int Value)
+    {
+        int tmp = -1;
+        for (int i = 0; i < 5; i++) {
+            if (Value >= Scores[i]) {
+                tmp = i;
+                break;
+            }
+        }
+        if (tmp != -1) {
+            for (int i = 4; i >= tmp; i--) {
+                Scores[i] = Scores[i - 1];
+            }
+            Scores[tmp] = Value;
+        }
+        // Set the high scores into the system
+        for (int i = 0; i < 5; i++) {
+            PlayerPrefs.SetInt(HighScores[i], Scores[i]);
+        }
+    }
+
+    private void GetScores()
+    {
+        for (int i = 0; i < 5; i++) {
+            Scores[i] = PlayerPrefs.GetInt(HighScores[i]);
+        }
     }
 }

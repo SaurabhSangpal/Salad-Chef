@@ -9,8 +9,11 @@ public class Game : MonoBehaviour
     public Player player1, player2;
     private float Timer;
 
+    private HighScore highscore;
+
     void Start()
     {
+        highscore = GetComponent<HighScore>();
         GameOver = false;
         Timer = 300.0f;
     }
@@ -56,6 +59,13 @@ public class Game : MonoBehaviour
         } else {
             PauseGame();
         }
+
         EndGame();
+
+        // If game is over, add to high scores
+        if (GameOver) {
+            highscore.AddToHighScore(player1.score.PlayerScore);
+            highscore.AddToHighScore(player2.score.PlayerScore);
+        }
     }
 }
