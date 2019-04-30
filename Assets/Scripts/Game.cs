@@ -23,12 +23,21 @@ public class Game : MonoBehaviour
         Paused = true;
     }
 
+    /// <summary>
+    /// End the game if any one of the players' time reaches zero or the game
+    /// timer reaches zero
+    /// </summary>
     private void EndGame()
     {
-        if (player1.TimeLeft <= 0f || player2.TimeLeft <= 0f) {
+        if (player1.TimeLeft <= 0f || player2.TimeLeft <= 0f || Timer <= 0) {
             GameOver = true;
             PauseGame();
         }
+    }
+
+    private void DeductPointsFromPlayer()
+    {
+
     }
 
     // Update is called once per frame
@@ -49,8 +58,9 @@ public class Game : MonoBehaviour
         // Update timer
         if (Timer >= 0) {
             Timer -= Time.deltaTime;
-        } else
+        } else {
             PauseGame();
+        }
         EndGame();
     }
 }

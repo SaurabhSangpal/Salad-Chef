@@ -15,8 +15,9 @@ public class Interactable : MonoBehaviour
     {
         if (Input.GetButtonDown(special) && gameobject) {
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 
     /// <summary>

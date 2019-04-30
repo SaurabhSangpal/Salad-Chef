@@ -22,9 +22,9 @@ public class Score : MonoBehaviour
     private readonly short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
     // Access customers; set within Sandbox
-    public Customer[] customers = new Customer[5];
-    // Stores value for the last customer whom the player has given wrong salad
-    private Customer WrongCustomer;
+    public Customer[] Customers = new Customer[5];
+    // Store which customers are angry
+    private List<string> AngryCustomers = new List<string>();
 
     // Booster class
     public Booster booster;
@@ -46,6 +46,8 @@ public class Score : MonoBehaviour
         if (interactable.PollForInput()) {
             //Debug.Log(interactable.gameobject.name);
             switch (interactable.gameobject.name) {
+                default:
+                    break;
                 case "Trash_Can":
                     FlushInventory();
                     break;
@@ -93,8 +95,9 @@ public class Score : MonoBehaviour
         } else {
             if (Item2 == -1) {
                 Item2 = i;
-            } else
+            } else {
                 Debug.Log("Inventory full!");
+            }
         }
     }
 
@@ -107,21 +110,42 @@ public class Score : MonoBehaviour
         if (interactable.PollForInput() && interactable.gameobject.tag == "Customer") {
             string GameObjectName = interactable.gameobject.name;
             switch (GameObjectName.Last()) {
+                default:
+                    break;
                 case '1':
-                    ProcessCustomer(customers[0]);
+                    ProcessCustomer(Customers[0]);
                     break;
                 case '2':
-                    ProcessCustomer(customers[1]);
+                    ProcessCustomer(Customers[1]);
                     break;
                 case '3':
-                    ProcessCustomer(customers[2]);
+                    ProcessCustomer(Customers[2]);
                     break;
                 case '4':
-                    ProcessCustomer(customers[3]);
+                    ProcessCustomer(Customers[3]);
                     break;
                 case '5':
-                    ProcessCustomer(customers[4]);
+                    ProcessCustomer(Customers[4]);
                     break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Check if a customer leaves and check if the customer was angry with
+    /// the player
+    /// </summary>
+    void CheckIfCustomerLeaves()
+    {
+        foreach (Customer cust in Customers) {
+            if (cust.DeductPoints > 0 && !cust.isAngry) {
+                DeductPoints();
+                cust.DeductPoints--;
+            } else if (cust.DeductPoints > 0 && AngryCustomers.Contains(cust.name)) {
+                DeductPoints();
+                DeductPoints();
+                _ = AngryCustomers.Remove(cust.name);
+                cust.DeductPoints--;
             }
         }
     }
@@ -149,8 +173,9 @@ public class Score : MonoBehaviour
             cust.CreateNewCustomer();
         } else {
             cust.GetAngry();
-            DeductPoints();
-            WrongCustomer = cust;
+            if (!AngryCustomers.Contains(cust.name)) { 
+                AngryCustomers.Add(cust.name);
+            }
         }
         ProcessedVegetables.Clear();
     }
@@ -169,10 +194,7 @@ public class Score : MonoBehaviour
     /// <summary>
     /// Removes points when player gives incorrect combination to the customer
     /// </summary>
-    void DeductPoints()
-    {
-        PlayerScore -= 3;
-    }
+    void DeductPoints() => PlayerScore -= 3;
 
     /// <summary>
     /// Adds items from the inventory to ProcessedVegetables
@@ -204,6 +226,7 @@ public class Score : MonoBehaviour
         CheckGameObject();
         CheckBooster();
         GetCustomer();
+        CheckIfCustomerLeaves();
         // Check if Processed Vegetables go above 3 and then remove the last element if it
         // does
         if (ProcessedVegetables.Count > 3) {

@@ -16,10 +16,11 @@ public class Customer : MonoBehaviour
     public float TotalTime, time;
 
     // Used for randomization
-    static System.Random random;
+    System.Random random;
 
     // Check if the customer is angry, used in Player.cs or Score.cs
     public bool isAngry;
+    public short DeductPoints = 0;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
@@ -39,9 +40,11 @@ public class Customer : MonoBehaviour
     /// </summary>
     void GenerateTime()
     {
-        TotalTime = 40.0f;
+        TotalTime = 30.0f;
         for (int i = 0; i < 3; i++) {
             switch (numbers[i]) {
+            default:
+                break;
             case 0:
                 TotalTime += 5;
                 break;
@@ -70,10 +73,9 @@ public class Customer : MonoBehaviour
     void TimePassed()
     {
         time += Time.deltaTime;
-        if (time >= TotalTime && isAngry) {
-            Awake();
-        } else if (time >= TotalTime && !isAngry) {
-            Awake();
+        if (time >= TotalTime) {
+            DeductPoints = 2;
+            CreateNewCustomer();
         }
     }
 
@@ -88,6 +90,11 @@ public class Customer : MonoBehaviour
     // CustomerText.Start() loads
     void Awake()
     {
+        CreateNewCustomer();
+    }
+
+    public void CreateNewCustomer()
+    {
         // Using GUID as seed to generate random numbers
         random = new System.Random(int.Parse(System.Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
         time = TotalTime = 0.0f;
@@ -95,11 +102,6 @@ public class Customer : MonoBehaviour
         GenerateTime();
         isAngry = false;
         Debug.Log("Customer Created");
-    }
-
-    public void CreateNewCustomer()
-    {
-        Awake();
     }
 
     void Update()
