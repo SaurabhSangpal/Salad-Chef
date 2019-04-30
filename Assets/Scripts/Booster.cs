@@ -53,24 +53,18 @@ public class Booster : MonoBehaviour
                 break;
             case 1:
                 SpeedBooster();
-                BoosterActive = 0;
                 break;
             case 2:
                 TimeBooster();
-                BoosterActive = 0;
                 break;
             case 3:
                 PointBooster();
-                BoosterActive = 0;
                 break;
         }
     }
 
     void Update()
     {
-        if (BoosterActive != 0) {
-            SetBooster();
-        }
         if (Timer >= BoosterVar) {
             player.speed = 8.0f;
         } else {

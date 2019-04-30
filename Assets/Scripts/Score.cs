@@ -167,7 +167,7 @@ public class Score : MonoBehaviour
             AwardPoints();
             // Pick a random booster
             Debug.Log((cust.time / cust.TotalTime) * 100);
-            if (cust.time / cust.TotalTime * 100 > 30) {
+            if ((cust.time / cust.TotalTime * 100) > 30) {
                 booster.BoosterActive = (short)Random.Range(1, 4);
             }
             cust.CreateNewCustomer();
@@ -215,6 +215,7 @@ public class Score : MonoBehaviour
         if (interactable.PollForInput()) {
             if (interactable.gameobject.tag == "Booster") {
                 // Is a booster, pick it up
+                booster.SetBooster();
                 return true;
             }
         }

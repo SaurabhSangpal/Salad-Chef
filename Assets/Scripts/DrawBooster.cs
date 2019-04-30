@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DrawBooster : MonoBehaviour
 {
     public Player player1, player2; // Assign in inspector
-    private Image image;
 
     // Will handle the position of the displayed image
     // Movement range : x -> -650 - 650
@@ -17,7 +15,6 @@ public class DrawBooster : MonoBehaviour
 
     void Start()
     {
-        image = GetComponent<Image>();
         ShowBooster = false;
         PlaceImage();
     }
@@ -26,12 +23,35 @@ public class DrawBooster : MonoBehaviour
     /// Checks the bool ShowBooster and displays/doesn't display the image for
     /// the booster accordingly
     /// </summary>
-    void DisplayImage()
+    void DisplayBooster()
     {
         if (ShowBooster) {
-            image.gameObject.SetActive(true);
+            gameObject.SetActive(true);
         } else {
-            image.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+    }
+
+    void CheckBooster()
+    {
+        switch (player1.score.booster.BoosterActive) {
+            default:
+                break;
+            case 1:
+                if (name == "Speed") {
+                    ShowBooster = true;
+                }
+                break;
+            case 2:
+                if (name == "Time") {
+                    ShowBooster = true;
+                }
+                break;
+            case 3:
+                if (name == "Points") {
+                    ShowBooster = true;
+                }
+                break;
         }
     }
 
@@ -41,14 +61,16 @@ public class DrawBooster : MonoBehaviour
     /// </summary>
     void PlaceImage()
     {
-        move = new Vector2();
-        move.x = Random.Range(-650, 651);
-        move.y = Random.Range(-245, 246);
-        image.rectTransform.localPosition = move;
+        move = new Vector3();
+        move.x = Random.Range(-5.6f, 13.5f);
+        move.y = Random.Range(-1.84f, 5.38f);
+        move.z = 227.86f;
+        transform.localPosition = move;
     }
 
     void Update()
     {
-        DisplayImage();
+        DisplayBooster();
+        CheckBooster();
     }
 }
