@@ -6,7 +6,10 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     // Player inventory and score
-    public int Item1, Item2;
+    private int item1, item2;
+    public int Item1 { get => item1; set => item1 = value; }
+    public int Item2 { get => item2; set => item2 = value; }
+
     public List<int> ProcessedVegetables = new List<int>();
     public int PlayerScore;
 
@@ -14,14 +17,14 @@ public class Score : MonoBehaviour
     public Interactable interactable = null;
 
     // Time required to cut each element and points awarded
-    public readonly float[] TimeRequired = new float[6] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
+    public readonly float[] TimeRequired = new[] { 0.5f, 0.5f, 1.0f, 1.5f, 2.5f, 2.0f };
 
     private readonly short[] PointsAwarded = new short[] { 3, 3, 4, 5, 6, 6 };
 
     // Access customers; set within Sandbox
-    public Customer[] customers = new Customer[5];
-    // Stores value for the last customer whom the player has given wrong salad
-    private Customer WrongCustomer;
+    public Customer[] Customers = new Customer[5];
+    // Store which customers are angry
+    private List<string> AngryCustomers = new List<string>();
 
     // Booster class
     public Booster booster;
@@ -40,11 +43,9 @@ public class Score : MonoBehaviour
     /// </summary>
     void CheckGameObject()
     {
-        if (interactable.PollForInput())
-        {
+        if (interactable.PollForInput()) {
             //Debug.Log(interactable.gameobject.name);
-            switch (interactable.gameobject.name)
-            {
+            switch (interactable.gameobject.name) {
                 default:
                     break;
                 case "Trash_Can":
@@ -89,17 +90,14 @@ public class Score : MonoBehaviour
     void AddToInventory(int i)
     {
         Debug.Log("Adding to inventory: " + i);
-        if (Item1 == -1)
-        {
+        if (Item1 == -1) {
             Item1 = i;
-        }
-        else
-        {
-            if (Item2 == -1)
-            {
+        } else {
+            if (Item2 == -1) {
                 Item2 = i;
-            } else
+            } else {
                 Debug.Log("Inventory full!");
+            }
         }
     }
 
@@ -109,28 +107,45 @@ public class Score : MonoBehaviour
     /// </summary>
     void GetCustomer()
     {
-        if (interactable.PollForInput() && interactable.gameobject.tag == "Customer")
-        {
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Customer") {
             string GameObjectName = interactable.gameobject.name;
-            switch (GameObjectName.Last())
-            {
+            switch (GameObjectName.Last()) {
                 default:
                     break;
                 case '1':
-                    ProcessCustomer(customers[0]);
+                    ProcessCustomer(Customers[0]);
                     break;
                 case '2':
-                    ProcessCustomer(customers[1]);
+                    ProcessCustomer(Customers[1]);
                     break;
                 case '3':
-                    ProcessCustomer(customers[2]);
+                    ProcessCustomer(Customers[2]);
                     break;
                 case '4':
-                    ProcessCustomer(customers[3]);
+                    ProcessCustomer(Customers[3]);
                     break;
                 case '5':
-                    ProcessCustomer(customers[4]);
+                    ProcessCustomer(Customers[4]);
                     break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Check if a customer leaves and check if the customer was angry with
+    /// the player
+    /// </summary>
+    void CheckIfCustomerLeaves()
+    {
+        foreach (Customer cust in Customers) {
+            if (cust.DeductPoints > 0 && !cust.isAngry) {
+                DeductPoints();
+                cust.DeductPoints--;
+            } else if (cust.DeductPoints > 0 && AngryCustomers.Contains(cust.name)) {
+                DeductPoints();
+                DeductPoints();
+                _ = AngryCustomers.Remove(cust.name);
+                cust.DeductPoints--;
             }
         }
     }
@@ -143,28 +158,24 @@ public class Score : MonoBehaviour
     void ProcessCustomer(Customer cust)
     {
         bool tmp = true;
-        for (int i = 0; i < 3; i++)
-        {
-            if (!ProcessedVegetables.Contains(cust.items[i]))
-            {
+        for (int i = 0; i < 3; i++) {
+            if (!ProcessedVegetables.Contains(cust.items[i])) {
                 tmp = false;
             }
         }
-        if (tmp)
-        {
+        if (tmp) {
             AwardPoints();
             // Pick a random booster
             Debug.Log((cust.time / cust.TotalTime) * 100);
-            if (cust.time / cust.TotalTime * 100 > 30)
-            {
+            if (cust.time / cust.TotalTime * 100 > 30) {
                 booster.BoosterActive = (short)Random.Range(1, 4);
             }
             cust.CreateNewCustomer();
-        } 
-        else { 
+        } else {
             cust.GetAngry();
-            DeductPoints();
-            WrongCustomer = cust;
+            if (!AngryCustomers.Contains(cust.name)) { 
+                AngryCustomers.Add(cust.name);
+            }
         }
         ProcessedVegetables.Clear();
     }
@@ -175,8 +186,7 @@ public class Score : MonoBehaviour
     /// </summary>
     void AwardPoints()
     {
-        foreach (int i in ProcessedVegetables)
-        {
+        foreach (int i in ProcessedVegetables) {
             PlayerScore += (int)PointsAwarded[i];
         }
     }
@@ -184,21 +194,16 @@ public class Score : MonoBehaviour
     /// <summary>
     /// Removes points when player gives incorrect combination to the customer
     /// </summary>
-    void DeductPoints()
-    {
-        PlayerScore -= 3;
-    }
+    void DeductPoints() => PlayerScore -= 3;
 
     /// <summary>
     /// Adds items from the inventory to ProcessedVegetables
     /// </summary>
     public void PushToProcessed()
     {
-        if (Item1 != -1)
-        {
+        if (Item1 != -1) {
             ProcessedVegetables.Add(Item1);
-            if (Item2 != -1)
-            {
+            if (Item2 != -1) {
                 ProcessedVegetables.Add(Item2);
             }
         }
@@ -207,10 +212,8 @@ public class Score : MonoBehaviour
 
     public bool CheckBooster()
     {
-        if (interactable.PollForInput())
-        {
-            if (interactable.gameobject.tag == "Booster")
-            {
+        if (interactable.PollForInput()) {
+            if (interactable.gameobject.tag == "Booster") {
                 // Is a booster, pick it up
                 return true;
             }
@@ -223,10 +226,10 @@ public class Score : MonoBehaviour
         CheckGameObject();
         CheckBooster();
         GetCustomer();
+        CheckIfCustomerLeaves();
         // Check if Processed Vegetables go above 3 and then remove the last element if it
         // does
-        if (ProcessedVegetables.Count > 3)
-        {
+        if (ProcessedVegetables.Count > 3) {
             _ = ProcessedVegetables.Remove(ProcessedVegetables.Count);
         }
     }

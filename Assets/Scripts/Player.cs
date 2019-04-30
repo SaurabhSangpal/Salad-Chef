@@ -20,24 +20,18 @@ public class Player : MonoBehaviour
     /// </summary>
     void SetMovement()
     {
-        if (Input.GetKey(up))
-        {
+        if (Input.GetKey(up)) {
             vertical = 1;
-        } else if (Input.GetKey(down))
-        {
+        } else if (Input.GetKey(down)) {
             vertical = -1;
-        } else
-        {
+        } else {
             vertical = 0;
         }
-        if (Input.GetKey(right))
-        {
+        if (Input.GetKey(right)) {
             horizontal = 1;
-        } else if (Input.GetKey(left))
-        {
+        } else if (Input.GetKey(left)) {
             horizontal = -1;
-        } else
-        {
+        } else {
             horizontal = 0;
         }
         move = new Vector2(horizontal, vertical);
@@ -46,24 +40,24 @@ public class Player : MonoBehaviour
 
     void AddBooster()
     {
-        if (score.CheckBooster())
-        {
+        if (score.CheckBooster()) {
             score.booster.SetBooster();
         }
     }
 
     void Start()
     {
-        score       = GetComponent<Score>();
+        score = GetComponent<Score>();
     }
 
     void Update()
     {
         SetMovement();
-        if (TimeLeft > 0)
-        {
+        if (TimeLeft > 0) {
             TimeLeft -= Time.deltaTime;
-        } else
-            Destroy(this.gameObject);
+        } else {
+            speed = 0f;
+            //Destroy(gameObject);
+        }
     }
 }

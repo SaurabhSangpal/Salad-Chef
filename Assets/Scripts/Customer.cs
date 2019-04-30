@@ -6,20 +6,21 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     // Set used for randomization and set used to store final items after randomization
-    public int[] numbers = new int[] { 0, 1, 2, 3, 4, 5 };
+    public int[] numbers = new[] { 0, 1, 2, 3, 4, 5 };
     public int[] items = new int[3];
 
     // Set of vegetable names
-    public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower"};
+    public string[] Veg = new string[] { "Tomato", "Potato", "Cucumber", "Carrot", "Cabbage", "Cauliflower" };
 
     // Total time before the customer leaves, and a timer that counts upwards until TotalTime
-    public  float TotalTime, time;
+    public float TotalTime, time;
 
     // Used for randomization
-    static System.Random random;
+    System.Random random;
 
     // Check if the customer is angry, used in Player.cs or Score.cs
-    public bool isAngry = false;
+    public bool isAngry;
+    public short DeductPoints = 0;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
@@ -29,8 +30,7 @@ public class Customer : MonoBehaviour
     void RandomizeArray()
     {
         numbers = numbers.OrderBy(x => random.Next()).ToArray();
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             items[i] = numbers[i];
         }
     }
@@ -40,12 +40,11 @@ public class Customer : MonoBehaviour
     /// </summary>
     void GenerateTime()
     {
-        TotalTime = 40.0f;
-
-        for(int i = 0; i < 3; i++)
-        {
-            switch (numbers[i])
-            {
+        TotalTime = 30.0f;
+        for (int i = 0; i < 3; i++) {
+            switch (numbers[i]) {
+            default:
+                break;
             case 0:
                 TotalTime += 5;
                 break;
@@ -64,11 +63,8 @@ public class Customer : MonoBehaviour
             case 5:
                 TotalTime += 10;
                 break;
-            default:
-                break;
             }
         }
-        //Debug.Log(TotalTime);
     }
 
     /// <summary>
@@ -77,14 +73,13 @@ public class Customer : MonoBehaviour
     void TimePassed()
     {
         time += Time.deltaTime;
-        if (time >= TotalTime && isAngry)
-        {
-            Awake();
-            // Failed the task
-        }
-        else if (time >= TotalTime && !isAngry)
-        {
-            Awake();
+        if (time >= TotalTime) {
+            if (isAngry) {
+                DeductPoints = 1;
+            } else {
+                DeductPoints = 2;
+            }
+            CreateNewCustomer();
         }
     }
 
@@ -99,17 +94,18 @@ public class Customer : MonoBehaviour
     // CustomerText.Start() loads
     void Awake()
     {
+        CreateNewCustomer();
+    }
+
+    public void CreateNewCustomer()
+    {
         // Using GUID as seed to generate random numbers
         random = new System.Random(int.Parse(System.Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
         time = TotalTime = 0.0f;
         RandomizeArray();
         GenerateTime();
+        isAngry = false;
         Debug.Log("Customer Created");
-    }
-
-    public void CreateNewCustomer()
-    {
-        Awake();
     }
 
     void Update()

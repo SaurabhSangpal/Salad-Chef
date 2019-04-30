@@ -22,8 +22,7 @@ public class CustomerText : MonoBehaviour
 
     void UpdateText()
     {
-        foreach (int i in customer.items)
-        {
+        foreach (int i in customer.items) {
             text.text += customer.Veg[i];
             text.text += ' ';
         }
@@ -31,8 +30,7 @@ public class CustomerText : MonoBehaviour
 
     void Update()
     {
-        if (CustomerTotalTime != customer.TotalTime)
-        {
+        if (CustomerTotalTime != customer.TotalTime) {
             text.text = "";
             UpdateText();
             CustomerTotalTime = customer.TotalTime;

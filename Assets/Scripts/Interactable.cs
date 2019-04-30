@@ -13,11 +13,11 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public bool PollForInput()
     {
-        if(Input.GetButtonDown(special) && gameobject)
-        {
+        if (Input.GetButtonDown(special) && gameobject) {
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 
     /// <summary>
@@ -26,11 +26,9 @@ public class Interactable : MonoBehaviour
     /// <param name="collider"></param>
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Interactable"))
-        {
+        if (collider.CompareTag("Interactable")) {
             gameobject = collider.gameObject;
-        } else if (collider.CompareTag("Customer"))
-        {
+        } else if (collider.CompareTag("Customer")) {
             gameobject = collider.gameObject;
         }
     }
@@ -42,10 +40,8 @@ public class Interactable : MonoBehaviour
     /// <param name="collider"></param>
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Interactable") || collider.CompareTag("Customer"))
-        {
-            if (collider.gameObject == gameobject)
-            {
+        if (collider.CompareTag("Interactable") || collider.CompareTag("Customer")) {
+            if (collider.gameObject == gameobject) {
                 gameobject = null;
             }
         }

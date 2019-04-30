@@ -550,6 +550,7 @@ MonoBehaviour:
   TotalTime: 0
   time: 0
   isAngry: 0
+  DeductPoints: 0
 --- !u!58 &278848128
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -852,6 +853,7 @@ GameObject:
   - component: {fileID: 347413701}
   - component: {fileID: 347413704}
   - component: {fileID: 347413705}
+  - component: {fileID: 347413706}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Player
@@ -1013,18 +1015,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13df33f1a9b5594489cd96e4d986240a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item1: 0
-  Item2: 0
   ProcessedVegetables: 
   PlayerScore: 0
   interactable: {fileID: 0}
-  customers:
+  Customers:
   - {fileID: 1324949523}
   - {fileID: 1709745593}
   - {fileID: 278848127}
   - {fileID: 405364616}
   - {fileID: 1609583715}
   booster: {fileID: 0}
+--- !u!114 &347413706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347413698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcb400deb5360441aedadccd0ca88f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoosterActive: 0
 --- !u!1 &351911540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,6 +1222,7 @@ MonoBehaviour:
   TotalTime: 0
   time: 0
   isAngry: 0
+  DeductPoints: 0
 --- !u!58 &405364617
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3445,6 +3459,7 @@ GameObject:
   - component: {fileID: 915684815}
   - component: {fileID: 915684818}
   - component: {fileID: 915684819}
+  - component: {fileID: 915684820}
   m_Layer: 0
   m_Name: Boy
   m_TagString: Player
@@ -3610,18 +3625,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13df33f1a9b5594489cd96e4d986240a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item1: 0
-  Item2: 0
   ProcessedVegetables: 
   PlayerScore: 0
   interactable: {fileID: 0}
-  customers:
+  Customers:
   - {fileID: 1324949523}
   - {fileID: 1709745593}
   - {fileID: 278848127}
   - {fileID: 405364616}
   - {fileID: 1609583715}
   booster: {fileID: 0}
+--- !u!114 &915684820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915684812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcb400deb5360441aedadccd0ca88f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoosterActive: 0
 --- !u!1001 &919056941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5265,6 +5291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1285102791}
   - component: {fileID: 1285102790}
+  - component: {fileID: 1285102792}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5300,6 +5327,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285102792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285102789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98938837ab1c01b4a90e2affeeb85400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1315681116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7138519565579089655, guid: b8298819a9faf7844a7247aa3f8bd90d,
@@ -5481,6 +5520,7 @@ MonoBehaviour:
   TotalTime: 0
   time: 0
   isAngry: 0
+  DeductPoints: 0
 --- !u!58 &1324949524
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6337,6 +6377,7 @@ MonoBehaviour:
   TotalTime: 0
   time: 0
   isAngry: 0
+  DeductPoints: 0
 --- !u!58 &1609583716
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6533,6 +6574,7 @@ MonoBehaviour:
   TotalTime: 0
   time: 0
   isAngry: 0
+  DeductPoints: 0
 --- !u!58 &1709745594
 CircleCollider2D:
   m_ObjectHideFlags: 0

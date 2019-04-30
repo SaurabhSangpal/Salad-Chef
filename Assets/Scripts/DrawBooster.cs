@@ -28,12 +28,9 @@ public class DrawBooster : MonoBehaviour
     /// </summary>
     void DisplayImage()
     {
-        if (ShowBooster)
-        {
+        if (ShowBooster) {
             image.gameObject.SetActive(true);
-        }
-        else
-        {
+        } else {
             image.gameObject.SetActive(false);
         }
     }

@@ -22,14 +22,12 @@ public class InventoryHUD : MonoBehaviour
     /// </summary>
     void GetInventory()
     {
-        if (player.score.Item1 != -1 && ItemsDisplayed < 1)
-        {
+        if (player.score.Item1 != -1 && ItemsDisplayed < 1) {
             text.text += Veg[player.score.Item1];
             text.text += ' ';
             ItemsDisplayed++;
         }
-        if (player.score.Item2 != -1 && ItemsDisplayed < 2)
-        {
+        if (player.score.Item2 != -1 && ItemsDisplayed < 2) {
             text.text += Veg[player.score.Item2];
             text.text += ' ';
             ItemsDisplayed++;
@@ -45,8 +43,7 @@ public class InventoryHUD : MonoBehaviour
     void Update()
     {
         GetInventory();
-        if (player.score.Item1 == -1)
-        {
+        if (player.score.Item1 == -1) {
             CleanInventory();
         }
     }

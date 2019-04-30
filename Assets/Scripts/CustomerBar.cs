@@ -24,8 +24,7 @@ public class CustomerBar : MonoBehaviour
     /// </summary>
     private void UpdateCustomerBar()
     {
-        if (time < customer.TotalTime)
-        {
+        if (time < customer.TotalTime) {
             time += Time.deltaTime;
             float ratio = time / customer.TotalTime;
             CustomerBarForeground.fillAmount = ratio;
@@ -35,8 +34,7 @@ public class CustomerBar : MonoBehaviour
     void Update()
     {
         // Check if the customer has reset
-        if (CustomerTotalTime != customer.TotalTime)
-        {
+        if (CustomerTotalTime != customer.TotalTime) {
             time = 1;
             CustomerTotalTime = customer.TotalTime;
         }
