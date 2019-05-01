@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
             TimeLeft -= Time.deltaTime;
         } else {
             speed = 0f;
-            //Destroy(gameObject);
         }
+        AddBooster();
     }
 }
