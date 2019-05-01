@@ -5415,6 +5415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337702987}
   - component: {fileID: 1337702986}
+  - component: {fileID: 1337702989}
   - component: {fileID: 1337702988}
   m_Layer: 0
   m_Name: Speed
@@ -5498,6 +5499,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowBooster: 0
+--- !u!58 &1337702989
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337702985}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3.66
 --- !u!1001 &1355068517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6333,6 +6350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1668256835}
   - component: {fileID: 1668256834}
+  - component: {fileID: 1668256837}
   - component: {fileID: 1668256836}
   m_Layer: 0
   m_Name: Points
@@ -6416,6 +6434,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowBooster: 0
+--- !u!58 &1668256837
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668256833}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.8
 --- !u!1 &1709745591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7678,6 +7712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029908542}
   - component: {fileID: 2029908541}
+  - component: {fileID: 2029908544}
   - component: {fileID: 2029908543}
   m_Layer: 0
   m_Name: Time
@@ -7743,7 +7778,7 @@ Transform:
   m_GameObject: {fileID: 2029908540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.095, y: 0.095, z: 1}
   m_Children: []
   m_Father: {fileID: 518185844}
   m_RootOrder: 3
@@ -7761,6 +7796,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowBooster: 0
+--- !u!58 &2029908544
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029908540}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 8.47
 --- !u!1 &2070451464
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,13 +38,6 @@ public class Player : MonoBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
-    void AddBooster()
-    {
-        if (score.CheckBooster()) {
-            score.booster.SetBooster();
-        }
-    }
-
     void Start()
     {
         score = GetComponent<Score>();
@@ -58,6 +51,5 @@ public class Player : MonoBehaviour
         } else {
             speed = 0f;
         }
-        AddBooster();
     }
 }

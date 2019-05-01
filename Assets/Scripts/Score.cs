@@ -210,16 +210,11 @@ public class Score : MonoBehaviour
         FlushInventory();
     }
 
-    public bool CheckBooster()
+    public void CheckBooster()
     {
-        if (interactable.PollForInput()) {
-            if (interactable.gameobject.tag == "Booster") {
-                // Is a booster, pick it up
-                booster.SetBooster();
-                return true;
-            }
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Booster") {
+            booster.SetBooster();
         }
-        return false;
     }
 
     void Update()
