@@ -30,6 +30,8 @@ public class Interactable : MonoBehaviour
             gameobject = collider.gameObject;
         } else if (collider.CompareTag("Customer")) {
             gameobject = collider.gameObject;
+        } else if (collider.CompareTag("Booster")) {
+            gameobject = collider.gameObject;
         }
     }
 
@@ -40,7 +42,8 @@ public class Interactable : MonoBehaviour
     /// <param name="collider"></param>
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Interactable") || collider.CompareTag("Customer")) {
+        if (collider.CompareTag("Interactable") || collider.CompareTag("Customer") ||
+            collider.CompareTag("Booster")) {
             if (collider.gameObject == gameobject) {
                 gameobject = null;
             }

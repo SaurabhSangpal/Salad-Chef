@@ -43,7 +43,7 @@ public class Score : MonoBehaviour
     /// </summary>
     void CheckGameObject()
     {
-        if (interactable.PollForInput()) {
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Interactable") {
             //Debug.Log(interactable.gameobject.name);
             switch (interactable.gameobject.name) {
                 default:
@@ -132,6 +132,16 @@ public class Score : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks if the player has picked up a booster
+    /// </summary>
+    public void CheckBooster()
+    {
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Booster") {
+            booster.SetBooster();
+        }
+    }
+
+    /// <summary>
     /// Check if a customer leaves and check if the customer was angry with
     /// the player
     /// </summary>
@@ -208,13 +218,6 @@ public class Score : MonoBehaviour
             }
         }
         FlushInventory();
-    }
-
-    public void CheckBooster()
-    {
-        if (interactable.PollForInput() && interactable.gameobject.tag == "Booster") {
-            booster.SetBooster();
-        }
     }
 
     void Update()
