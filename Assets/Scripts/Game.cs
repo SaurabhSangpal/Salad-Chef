@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -57,7 +58,7 @@ public class Game : MonoBehaviour
         if (Timer >= 0) {
             Timer -= Time.deltaTime;
         } else {
-            PauseGame();
+            //PauseGame();
         }
 
         EndGame();
@@ -66,6 +67,8 @@ public class Game : MonoBehaviour
         if (GameOver) {
             highscore.AddToHighScore(player1.score.PlayerScore);
             highscore.AddToHighScore(player2.score.PlayerScore);
+            Paused = false;
+            SceneManager.LoadScene("Main Menu");
         }
     }
 }

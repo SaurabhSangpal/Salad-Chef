@@ -43,7 +43,7 @@ public class Score : MonoBehaviour
     /// </summary>
     void CheckGameObject()
     {
-        if (interactable.PollForInput()) {
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Interactable") {
             //Debug.Log(interactable.gameobject.name);
             switch (interactable.gameobject.name) {
                 default:
@@ -132,6 +132,16 @@ public class Score : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks if the player has picked up a booster
+    /// </summary>
+    public void CheckBooster()
+    {
+        if (interactable.PollForInput() && interactable.gameobject.tag == "Booster") {
+            booster.SetBooster();
+        }
+    }
+
+    /// <summary>
     /// Check if a customer leaves and check if the customer was angry with
     /// the player
     /// </summary>
@@ -167,7 +177,7 @@ public class Score : MonoBehaviour
             AwardPoints();
             // Pick a random booster
             Debug.Log((cust.time / cust.TotalTime) * 100);
-            if (cust.time / cust.TotalTime * 100 > 30) {
+            if ((cust.time / cust.TotalTime * 100) > 30) {
                 booster.BoosterActive = (short)Random.Range(1, 4);
             }
             cust.CreateNewCustomer();
@@ -208,17 +218,6 @@ public class Score : MonoBehaviour
             }
         }
         FlushInventory();
-    }
-
-    public bool CheckBooster()
-    {
-        if (interactable.PollForInput()) {
-            if (interactable.gameobject.tag == "Booster") {
-                // Is a booster, pick it up
-                return true;
-            }
-        }
-        return false;
     }
 
     void Update()

@@ -58,6 +58,7 @@ public class HighScore : MonoBehaviour
         for (int i = 0; i < 5; i++) {
             PlayerPrefs.SetInt(HighScores[i], Scores[i]);
         }
+        PlayerPrefs.Save();
     }
 
     private void GetScores()

@@ -21,6 +21,7 @@ public class Booster : MonoBehaviour
     {
         Timer = 0.0f;
         player.speed *= 2;
+        BoosterActive = 0;
     }
 
     /// <summary>
@@ -29,6 +30,7 @@ public class Booster : MonoBehaviour
     void TimeBooster()
     {
         player.TimeLeft += BoosterVar * 2;
+        BoosterActive = 0;
     }
 
     /// <summary>
@@ -37,6 +39,7 @@ public class Booster : MonoBehaviour
     void PointBooster()
     {
         player.score.PlayerScore += (int)BoosterVar;
+        BoosterActive = 0;
     }
 
     /// <summary>
@@ -53,24 +56,18 @@ public class Booster : MonoBehaviour
                 break;
             case 1:
                 SpeedBooster();
-                BoosterActive = 0;
                 break;
             case 2:
                 TimeBooster();
-                BoosterActive = 0;
                 break;
             case 3:
                 PointBooster();
-                BoosterActive = 0;
                 break;
         }
     }
 
     void Update()
     {
-        if (BoosterActive != 0) {
-            SetBooster();
-        }
         if (Timer >= BoosterVar) {
             player.speed = 8.0f;
         } else {
