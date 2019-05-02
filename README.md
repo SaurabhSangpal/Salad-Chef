@@ -1,9 +1,9 @@
 # Salad-Chef
 This is a video game
-## Prerequisites
+### Prerequisites
 Unity Engine 2019.1.0f2.
 Visual Studio or Mono Develop.
-## Status
+### Status
 There are two player characters, can be controlled by WASD and arrow keys
 and both have collision detection.
 Bricks are the borders, the player can't leave the play area.
@@ -27,11 +27,15 @@ order.
 Player timer shows up at bottom left/right.
 Game timer shows up at top right corner.
 
-## TODO
-Spawn boosters when player gives correct combination within 70% of customer
-waiting time.
+Player can earn boosters by serving the correct salad to a customer within
+70% of their wait time.
 
-# Disclaimer
+There are three different types of boosters __SPEED__, __POINTS__ and
+__TIME__.
+Speed booster gives you double speed for 10 seconds. Time booster adds
+20 seconds to your time and point booster adds 10 points to your score.
+
+## Disclaimer
 None of the images (except bar2.png) used in this game are created or owned
 by me. All of the images used in this game are licensed under a Creative
 Commons license.
